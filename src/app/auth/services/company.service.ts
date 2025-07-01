@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CompanyService {
-  private apiUrl = '/api/companies';
+  private readonly apiUrl = `${environment.apiBaseUrl}/companies`;
   
   constructor(private http: HttpClient) {}
 
