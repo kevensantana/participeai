@@ -1,0 +1,25 @@
+.layout-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.col{
+width: 17%;
+}
+
+.content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 2rem;
+  /* background-color: red; */
+}
+
+@media (max-width: 768px) {
+  .col {
+    display: none;
+  }
+}
+
+

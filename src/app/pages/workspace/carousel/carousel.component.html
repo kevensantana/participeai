@@ -1,0 +1,116 @@
+<!-- Banner Carousel -->
+<section class="">
+  <div class="carousel-container">
+    <div class="carousel-slide active gradient-1" id="slide-0" [class.active]="isActive(0)">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-pattern"></div>
+      <div class="carousel-content">
+        <div class="carousel-text">
+          <h2 class="carousel-title">Bem vindo de volta!!</h2>
+          <p class="carousel-description">
+            Descubra como nossa plataforma conecta você a soluções inteligentes para cuidar da água, da energia, entre outros, tudo com economia e impacto positivo. Clique abaixo e mergulhe em uma nova forma de transformar hábitos em ações sustentáveis!
+          </p>
+        </div>
+        <div class="carousel-circle">
+          <div class="carousel-circle-inner">
+            <svg
+              class="icon-xl"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polygon
+                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+              ></polygon>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-slide gradient-2" id="slide-1" [class.active]="isActive(1)">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-pattern"></div>
+      <div class="carousel-content">
+        <div class="carousel-text">
+          <div class="carousel-badge">Popular</div>
+          <h2 class="carousel-title">Economia Inteligente</h2>
+          <p class="carousel-subtitle">Reduza custos e aumente a eficiência</p>
+          <p class="carousel-description">
+            Monitore e otimize seus recursos em tempo real
+          </p>
+        </div>
+        <div class="carousel-circle">
+          <div class="carousel-circle-inner">
+            <svg
+              class="icon-xl"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polygon
+                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+              ></polygon>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-slide gradient-3" id="slide-2" [class.active]="isActive(2)">
+      <div class="carousel-overlay"></div>
+      <div class="carousel-pattern"></div>
+      <div class="carousel-content">
+        <div class="carousel-text">
+          <div class="carousel-badge">Novo</div>
+          <h2 class="carousel-title">Sustentabilidade em Primeiro Lugar</h2>
+          <p class="carousel-subtitle">Transforme seu negócio com soluções eco-friendly</p>
+          <p class="carousel-description">
+            Descubra como nossa plataforma pode revolucionar sua gestão
+            ambiental
+          </p>
+        </div>
+        <div class="carousel-circle">
+          <div class="carousel-circle-inner">
+            <svg
+              class="icon-xl"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <polygon
+                points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+              ></polygon>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-nav carousel-prev" onclick="previousSlide()">
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="15,18 9,12 15,6"></polyline>
+      </svg>
+    </button>
+    <button class="carousel-nav carousel-next" onclick="nextSlide()">
+      <svg
+        class="icon"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <polyline points="9,18 15,12 9,6"></polyline>
+      </svg>
+    </button>
+  </div>
+</section>

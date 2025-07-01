@@ -1,0 +1,68 @@
+<div class="signup-container">
+  <div class="signup-card">
+    <div class="signup-image">
+      <img src="/image-empresa.jpg" alt="Cadastro Empresa" />
+    </div>
+    <div class="container-form">
+      <div class="signup-form">
+        <h1>Cadastre sua Empresa</h1>
+       <form #registerForm="ngForm" (ngSubmit)="register()">
+          <div class="form-group">
+            <input type="text" id="legalName" [(ngModel)]="company.legalName" name="legalName" required placeholder="Razão Social" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <input type="text" id="tradeName" [(ngModel)]="company.tradeName" name="tradeName" required placeholder="Nome Fantasia" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <input type="text" id="cnpj" [(ngModel)]="company.cnpj" name="cnpj" required placeholder="CNPJ" autocomplete="off" maxlength="18" (input)="formatCnpj()" (keypress)="onlyNumber($event)">
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" [(ngModel)]="company.email" name="email" required placeholder="E-mail da empresa">
+          </div>
+          <div class="form-group">
+            <input type="text" id="phone" [(ngModel)]="company.phone" name="phone" required placeholder="Telefone de Contato">
+          </div>
+          <div class="form-group">
+            <input type="text" id="responsiblePerson" [(ngModel)]="company.responsiblePerson" name="responsiblePerson" required placeholder="Responsável Legal">
+          </div>
+          <div class="form-group">
+            <input type="text" id="responsibleCpf" [(ngModel)]="company.responsibleCpf" name="responsibleCpf" required placeholder="CPF do Responsável" (keypress)="onlyNumber($event)" maxlength="14">
+          </div>
+          <div class="form-group">
+            <select id="companySize" [(ngModel)]="company.companySize" name="companySize" required>
+              <option value="" disabled selected>Porte da Empresa</option>
+              <option value="MEI">MEI - Microempreendedor Individual</option>
+              <option value="ME">ME - Microempresa</option>
+              <option value="EPP">EPP - Empresa de Pequeno Porte</option>
+              <option value="Média">Média Empresa</option>
+              <option value="Grande">Grande Empresa</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="password" id="password" [(ngModel)]="company.password" name="password" required placeholder="Senha" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <input type="password" id="confirmPassword" [(ngModel)]="company.confirmPassword" name="confirmPassword" required placeholder="Confirme a senha" autocomplete="off">
+          </div>
+          <div class="form-terms">
+            <label>
+              <input type="checkbox" [(ngModel)]="company.acceptTerms" name="acceptTerms" required />
+              Aceitar os termos de uso
+            </label>
+          </div>
+          <button type="submit" class="btn-signup">Cadastrar Empresa</button>
+          <div class="form-group">
+            <p>Já tem conta? <a routerLink="/login">Faça login</a></p>
+          </div>
+          <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+          <div *ngIf="successMessage" class="success-message">{{ successMessage }}</div>
+        </form>
+      </div>
+      <footer class="footer">
+        <p>
+          &copy; 2025 <strong class="brand">Participe.AI</strong> — Todos os direitos reservados.
+        </p>
+      </footer>
+    </div>
+  </div>
+</div>

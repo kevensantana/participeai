@@ -1,0 +1,35 @@
+<div class="payment-methods">
+  <form (ngSubmit)="finalizarCompra()" #checkoutForm="ngForm" class="payment-methods">
+    <label>
+      <select name="formaPagamento" [(ngModel)]="formaPagamento" required>
+        <option value="" disabled>Selecione</option>
+        <option value="cartao">Cartão de Crédito</option>
+        <option value="boleto">Boleto Bancário</option>
+        <option value="pix">PIX</option>
+      </select>
+    </label>
+
+    <div *ngIf="formaPagamento === 'cartao'">
+      <label>
+        Número do Cartão:
+        <input type="text" name="numCartao" ngModel required />
+      </label>
+      <label>
+        Validade:
+        <input type="month" name="validadeCartao" ngModel required />
+      </label>
+      <label>
+        CVV:
+        <input type="text" name="cvv" ngModel required />
+      </label>
+    </div>
+
+    <div *ngIf="formaPagamento === 'boleto'">
+      <p>Você receberá o boleto no e-mail cadastrado.</p>
+    </div>
+
+    <div *ngIf="formaPagamento === 'pix'">
+        <p>  Chave PIX: .....</p>
+    </div>
+  </form>
+</div>

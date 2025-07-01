@@ -1,0 +1,88 @@
+<app-product-header></app-product-header>
+
+<main class="container main-content">
+  <div class="container">
+    <div class="page-header">
+      <div class="page-title-section">
+        <h1 class="page-title">
+          <i i class="fa-solid fa-cart-shopping"></i>
+          Carrinho
+        </h1>
+      </div>
+    </div>
+    <div class="cart-container">
+      <div class="cart-items-container">
+        <div *ngIf="produtosNoCarrinho.length; else vazio">
+          <div *ngFor="let produto of produtosNoCarrinho" class="cart-item">
+            <div class="cart-item-image">
+              <img [src]="produto.imageUrl" [alt]="produto.name" class="item-image">
+            </div>
+            <div class="cart-item-details">
+              <div class="cart-item-header">
+                <h3 class="cart-item-name">{{ produto.name }}</h3>
+                <div class="cart-item-subtotal">
+                  <span class="subtotal-value">R$ {{ (produto.price * (produto.quantity || 1)) | number:'1.2-2' }}</span>
+                </div>
+              </div>
+              <p class="cart-item-company">{{ produto.description }}</p>
+              <span class="cart-item-price">R$ {{ produto.price | number:'1.2-2' }} cada</span>
+              <div class="cart-item-actions">
+                <div class="quantity-control">
+                  <button class="quantity-btn minus-btn" (click)="decrementarQuantidade(produto)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </button>
+                  <span class="quantity">{{ produto.quantity || 1 }}</span>
+                  <button class="quantity-btn plus-btn" (click)="incrementarQuantidade(produto)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="12" y1="5" x2="12" y2="19"></line>
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                  </button>
+                </div>
+                <button class="remove-item-btn" (click)="removerDoCarrinho(produto.id)">
+                  <i class="fa-solid fa-trash"></i>
+                  <span>Remover</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-template #vazio>
+          <div class="empty-cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <h3>Seu carrinho está vazio</h3>
+            <p>Adicione alguns produtos para continuar</p>
+            <a routerLink="/" class="continue-shopping-btn">Continuar comprando</a>
+          </div>
+        </ng-template>
+      </div>
+      <div class="order-summary">
+        <div class="summary-card">
+          <h2 class="summary-title">Resumo do Pedido</h2>
+          <div class="summary-content">
+            <div class="summary-row">
+              <span>Subtotal ({{ produtosNoCarrinho.length }} itens)</span>
+              <span>R$ {{ calcularTotal() | number:'1.2-2' }}</span>
+            </div>
+            <div class="summary-row">
+              <span>Taxa de entrega</span>
+              <span>R$ 5,00</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-row total">
+              <span>Total</span>
+              <span>R$ {{ calcularTotal() + 5 | number:'1.2-2' }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="payment-methods-card">
+          <h2 class="summary-title">Forma de pagamento</h2>
+          <app-product-checkout></app-product-checkout>
+          <button class="checkout-btn">Finalizar compra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

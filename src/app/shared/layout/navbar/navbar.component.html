@@ -1,0 +1,42 @@
+<header class="navbar">
+  <div class="navbar-start">
+    <button class="icon-button" (click)="onToggleSidebar()">
+      <span class="material-icons">menu</span>
+    </button>
+    <img src="logo-dark.png" alt="logo">
+  </div>
+
+  <div class="navbar-search">
+    <div class="search-wrapper">
+      <span class="material-icons">search</span>
+      <input type="text" id="search-input" placeholder="Pesquise pelos produtos aqui ..." (input)="onSearchInput($event)">
+    </div>
+  </div>
+
+  <div class="navbar-end">
+    <a class="nav-action">
+      <i class="fa-solid fa-bell" [routerLink]="['/notifications']"></i>
+      <span class="notification-badge">3</span>
+    </a>
+    <img class="user-pic" src="/time/keven.jpeg" alt="" (click)="toggleMenu()">
+    <div class="sub-menu-wrap" [ngClass]="{ 'open-menu': isMenuOpen }" id="subMenu">
+      <div class="sub-menu">
+        <div class="user-info">
+          <img src="/time/keven.jpeg" alt="">
+          <h3>Keven santana</h3>
+        </div>
+        <hr>
+        <a [routerLink]="['/perfil']" class="sub-menu-link" (click)="closeMenu()">
+          <img src="/navbar/profile.png" alt="">
+          <p>Editar perfil</p>
+          <span>></span>
+        </a>
+        <a [routerLink]="['/login']" class="sub-menu-link" (click)="closeMenu()">
+          <img src="/navbar/logout.png" alt="">
+          <p>Sair</p>
+          <span>></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

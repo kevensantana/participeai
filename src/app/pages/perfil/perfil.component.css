@@ -1,0 +1,207 @@
+
+.profile-container {
+  display: flex;
+  min-height: 100vh;
+  gap: 2rem;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.profile-img img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.sidebar h3 {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.role {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  padding: 8px;
+}
+
+.menu a {
+  position: relative;
+  isolation: isolate;
+  padding-bottom: 10px;
+  transition: 0.3s;
+  text-decoration: none;
+  color: black;
+}
+
+.menu a::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: var(--green-light);
+  transition: 0.3s;
+  transform-origin: left;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.menu a:hover {
+  color: var(--green-light);
+}
+
+.menu a.active {
+  color: var(--green-light);
+}
+
+.menu a.active::after {
+  width: 100%;
+  background-color: var(--green-light);
+}
+
+.menu a i {
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.main-content {
+  flex: 1;
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.form h2,
+.form p {
+  margin-bottom: 1rem;
+}
+
+.grid-2 {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.5rem 0;
+  border: none;
+  border-bottom: 2px solid #a1a0a0; /* cor da imagem */
+  background: transparent;
+  outline: none;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  border-bottom: 2px solid var(--green-light); /* ou outra cor de foco */
+}
+
+.switch input[type="checkbox"] {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+  accent-color: #ff4d4d;
+  transform: scale(1.5);
+  margin-right: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  font-family: inherit;
+  font-size: 18px;
+  color: white;
+  fill: rgb(155, 153, 153);
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  font-weight: 1000;
+}
+
+.btn span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn i {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.btn:hover .svg-wrapper {
+  transform: scale(1.25);
+  transition: 0.5s linear;
+}
+
+.btn:hover i {
+  transform: translateX(1.2em) scale(1.1);
+  fill: #fff;
+}
+
+.btn:hover span {
+  opacity: 0;
+  transition: 0.5s linear;
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn.save,
+.btn.save:hover {
+  background: var(--green-light);
+}
+
+.btn.delete,
+.btn.delete:hover {
+  background: rgb(255, 69, 69);
+}
+
+button.btn.delete:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

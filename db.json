@@ -1,0 +1,348 @@
+{
+  "users": [
+    {
+      "id": "3a1b",
+      "name": "Ana Clara Silva2",
+      "cpf": "321.654.987-12",
+      "birthDate": "1995-05-05",
+      "email": "ana.clara@gmail.com",
+      "password": "AnaClara@2023",
+      "status": "inativo",
+      "createdAt": "2023-05-05",
+      "role": "usuario",
+      "acceptTerms": true
+    },
+    {
+      "id": "7d2c",
+      "name": "Bruno Souza Lima",
+      "cpf": "654.321.987-45",
+      "birthDate": "1990-08-20",
+      "email": "bruno.souza@gmail.com",
+      "password": "Bruno@456",
+      "status": "ativo",
+      "createdAt": "2022-08-20",
+      "role": "usuario",
+      "acceptTerms": true
+    },
+    {
+      "id": "c488",
+      "name": "admin",
+      "cpf": "000.000.000-00",
+      "birthDate": "00/00/0000",
+      "email": "admin@admin.com",
+      "password": "admin",
+      "confirmPassword": "admin",
+      "status": "ativo",
+      "createdAt": "2025-05-09T00:51:16.737Z",
+      "role": "usuario",
+      "acceptTerms": true
+    },
+    {
+      "id": "4a87",
+      "name": "Keven Santana",
+      "email": "kevensantana40@gmail.com",
+      "cpf": "123.123.123.12",
+      "birthDate": "2001-03-17",
+      "role": "user",
+      "acceptTerms": false,
+      "residencia": {
+        "cep": "",
+        "logradouro": "",
+        "numero": "",
+        "bairro": "",
+        "complemento": "",
+        "cidade": "",
+        "estado": ""
+      }
+    },
+    {
+      "id": "aaa6",
+      "name": "Gustavo Santos",
+      "cpf": "123.123.123-12",
+      "birthDate": "2001-03-22",
+      "email": "Gustavo@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "status": "ativo",
+      "createdAt": "2025-06-17T01:24:38.720Z",
+      "role": "usuario",
+      "acceptTerms": true
+    },
+    {
+      "id": "3bd2",
+      "name": "slasa",
+      "cpf": "123.113.131-21",
+      "birthDate": "3222-02-21",
+      "email": "kevensantanana@gmail.com",
+      "password": "123",
+      "confirmPassword": "123",
+      "status": "ativo",
+      "createdAt": "2025-06-17T02:08:38.485Z",
+      "role": "usuario",
+      "acceptTerms": true
+    },
+    {
+      "id": "6a9b",
+      "name": "keven",
+      "cpf": "442.424.242-32",
+      "birthDate": "0131-12-31",
+      "email": "kevesnw31231@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "status": "ativo",
+      "createdAt": "2025-06-17T02:40:50.617Z",
+      "role": "usuario",
+      "acceptTerms": true
+    },
+    {
+      "id": "d029",
+      "name": "keven",
+      "cpf": "213.131.312-31",
+      "birthDate": "2025-06-02",
+      "email": "kevensantana3240@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "status": "ativo",
+      "createdAt": "2025-06-17T02:46:47.685Z",
+      "role": "usuario",
+      "acceptTerms": true
+    },
+    {
+      "id": "2936",
+      "name": "Giovana",
+      "cpf": "123.123.123-12",
+      "birthDate": "123121-03-12",
+      "email": "Giovana123@gmail.com",
+      "password": "123456",
+      "confirmPassword": "123456",
+      "status": "ativo",
+      "createdAt": "2025-06-17T03:00:51.867Z",
+      "role": "usuario",
+      "acceptTerms": true
+    }
+  ],
+  "companies": [
+    {
+      "id": "3",
+      "legalName": "Água Pura Serviços Ambientais Ltda",
+      "tradeName": "Água Pura",
+      "cnpj": "56.789.012/0001-34",
+      "email": "atendimento@aguapura.com",
+      "phone": "(71) 98765-4321",
+      "password": "AguaPura@2024",
+      "confirmPassword": "AguaPura@2024",
+      "responsiblePerson": "Marcos Vinícius Almeida",
+      "responsibleCpf": "456.789.123-99",
+      "companySize": "EPP",
+      "address": {
+        "street": "Av. Bonocô",
+        "number": "200",
+        "city": "Salvador",
+        "state": "BA",
+        "zipCode": "40283-000"
+      },
+      "acceptTerms": true
+    },
+    {
+      "id": "52c8",
+      "name": "sla emp",
+      "cnpj": "",
+      "email": "",
+      "password": "",
+      "confirmPassword": "",
+      "responsiblePerson": "",
+      "companySize": "",
+      "acceptTerms": true
+    },
+    {
+      "id": "c6e8",
+      "legalName": "ewewew",
+      "tradeName": "ewewe",
+      "cnpj": "31.313.1221-124/14",
+      "email": "ewew2131",
+      "phone": "",
+      "password": "",
+      "confirmPassword": "",
+      "responsiblePerson": "",
+      "responsibleCpf": "",
+      "companySize": "",
+      "acceptTerms": true
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Tomate",
+      "description": "Tomate fresco, ótimo para saladas.",
+      "price": 4.5,
+      "imageUrl": "https://52586.cdn.lojaquevende.com.br/static/52586/sku/legumes-Tomate-Andrea-1586283695804.png",
+      "category": "verduras",
+      "stock": 50,
+      "quantity": 1,
+      "rating": {
+        "rate": 4.5,
+        "count": 120
+      }
+    },
+    {
+      "id": "2",
+      "name": "Laranja",
+      "description": "Laranja doce e suculenta.",
+      "price": 3.2,
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-6RgR0LEHqaVoUKC7d2XkK8CfxMu-tWMdpw&s",
+      "category": "frutas",
+      "stock": 80,
+      "quantity": 1,
+      "rating": {
+        "rate": 4,
+        "count": 98
+      }
+    },
+    {
+      "id": "3",
+      "name": "Alface",
+      "description": "Alface crocante para sua salada.",
+      "price": 2.75,
+      "imageUrl": "https://giassi.vtexassets.com/arquivos/ids/2730232-800-450?v=638627057878430000&width=800&height=450&aspect=true",
+      "category": "verduras",
+      "stock": 30,
+      "quantity": 1,
+      "rating": {
+        "rate": 4.2,
+        "count": 75
+      }
+    },
+    {
+      "id": "4",
+      "name": "Banana",
+      "description": "Banana madura e doce.",
+      "price": 3,
+      "imageUrl": "https://www.infoescola.com/wp-content/uploads/2010/04/banana_600797891.jpg",
+      "category": "frutas",
+      "stock": 100,
+      "quantity": 1,
+      "rating": {
+        "rate": 4.3,
+        "count": 150
+      }
+    },
+    {
+      "id": "5",
+      "name": "Cenoura",
+      "description": "Cenoura orgânica para uma alimentação saudável.",
+      "price": 2.9,
+      "imageUrl": "https://www.sakata.com.br/assets/hortalicas/412/1400x/cenoura-alanna.png",
+      "category": "organicos",
+      "stock": 40,
+      "quantity": 1,
+      "rating": {
+        "rate": 4.6,
+        "count": 60
+      }
+    },
+    {
+      "id": "6",
+      "name": "Maçã",
+      "description": "Maçã crocante e suculenta.",
+      "price": 4,
+      "imageUrl": "https://cdn.awsli.com.br/600x450/681/681419/produto/31455208/whatsapp-image-2024-09-25-at-16-22-55--2--ws3z586ug9.jpeg",
+      "category": "frutas",
+      "stock": 70,
+      "quantity": 1,
+      "rating": {
+        "rate": 4.4,
+        "count": 110
+      }
+    },
+    {
+      "id": "7",
+      "name": "Pepino",
+      "description": "Pepino fresco, perfeito para saladas.",
+      "price": 3.5,
+      "imageUrl": "https://s2.glbimg.com/NyKqrUhGOJJjL3JAq9jQK9aaQhw=/512x320/smart/e.glbimg.com/og/ed/f/original/2013/12/02/como_plantar_pepino.jpg",
+      "category": "verduras",
+      "stock": 55,
+      "quantity": 1,
+      "rating": {
+        "rate": 4.1,
+        "count": 80
+      }
+    },
+    {
+      "id": "8",
+      "name": "Alho Orgânico",
+      "description": "Alho cultivado sem agrotóxicos.",
+      "price": 5.25,
+      "imageUrl": "https://organic4.com.br/wp-content/uploads/2024/04/alho-1.jpg",
+      "category": "organicos",
+      "stock": 25,
+      "quantity": 1,
+      "rating": {
+        "rate": 4.7,
+        "count": 45
+      }
+    },
+    {
+      "id": "9",
+      "name": "Morango",
+      "description": "Morango doce e fresco, perfeito para sobremesas.",
+      "price": 6,
+      "imageUrl": "https://assessa.com.br/wp-content/uploads/morango-feat-img.jpg",
+      "category": "frutas",
+      "stock": 35,
+      "quantity": 1,
+      "rating": {
+        "rate": 4.8,
+        "count": 95
+      }
+    }
+  ],
+  "cart": [
+    {
+      "id": "1",
+      "name": "Tomate",
+      "description": "Tomate fresco, ótimo para saladas.",
+      "price": 4.5,
+      "imageUrl": "https://52586.cdn.lojaquevende.com.br/static/52586/sku/legumes-Tomate-Andrea-1586283695804.png",
+      "category": "verduras"
+    },
+    {
+      "id": "3",
+      "name": "Alface",
+      "description": "Alface crocante para sua salada.",
+      "price": 2.75,
+      "imageUrl": "https://giassi.vtexassets.com/arquivos/ids/2730232-800-450?v=638627057878430000&width=800&height=450&aspect=true",
+      "category": "verduras"
+    },
+    {
+      "id": "6",
+      "name": "Maçã",
+      "description": "Maçã crocante e suculenta.",
+      "price": 4,
+      "imageUrl": "https://cdn.awsli.com.br/600x450/681/681419/produto/31455208/whatsapp-image-2024-09-25-at-16-22-55--2--ws3z586ug9.jpeg",
+      "category": "frutas"
+    },
+    {
+      "id": "9",
+      "name": "Morango",
+      "description": "Morango doce e fresco, perfeito para sobremesas.",
+      "price": 6,
+      "imageUrl": "https://assessa.com.br/wp-content/uploads/morango-feat-img.jpg",
+      "category": "frutas"
+    },
+    {
+      "id": "2",
+      "name": "Laranja",
+      "description": "Laranja doce e suculenta.",
+      "price": 3.2,
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-6RgR0LEHqaVoUKC7d2XkK8CfxMu-tWMdpw&s",
+      "category": "frutas",
+      "stock": 80,
+      "quantity": 1,
+      "rating": {
+        "rate": 4,
+        "count": 98
+      }
+    }
+  ]
+}

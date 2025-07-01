@@ -1,0 +1,58 @@
+<section>
+  <div class="box">
+    <div class="inner-box">
+      <div class="forms-wrap">
+        <form (ngSubmit)="loginLocal()" #loginForm="ngForm" class="sign-in-form">
+          <div class="logo">
+            <a routerLink="/landing">
+              <img src="logo-dark.png" alt="Logotipo da Participe.ai" />
+            </a>
+          </div> 
+
+          <div class="heading">
+            <h2>Bem vindo</h2>
+            <h6>Ainda não tem uma conta?</h6>
+            <a class="toggle" routerLink="/register">Cadastre-se</a>
+          </div>
+
+          <div class="actual-form">
+            <div class="input-wrap">
+              <input type="email" id="email" [(ngModel)]="email" name="email" class="input-field" required />
+              <label>Email</label>
+            </div>
+
+            <div class="input-wrap">
+              <input type="password" id="password" [(ngModel)]="password" name="password" class="input-field" required />
+              <label>Senha</label>
+            </div>
+
+            <p class="text-remember">Esqueceu a senha?</p>
+
+            <button type="submit" class="sign-btn">Entrar</button>
+
+            <p class="text-diviser">OU</p>
+
+            <a (click)="loginAuth0()">
+              <div class="logoAcess">
+                <img src="/LogoGoogle.png" alt="Logo Google">
+                <p class="text-acess"> Entrar com o Google</p>
+              </div>
+            </a>
+
+            <div *ngIf="loading">Carregando...</div>
+
+            <p class="footer">
+              &copy; 2025 <strong class="brand">Participe.AI</strong> — Todos os direitos reservados
+            </p>
+          </div>
+        </form>
+      </div>
+      
+
+      <div class="background">
+        <img src="login-background.png" alt="background de login - Homem branco com roupa social" />
+      </div>
+    </div>
+  </div>
+  
+</section>

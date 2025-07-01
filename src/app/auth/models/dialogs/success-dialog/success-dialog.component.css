@@ -1,0 +1,39 @@
+.dialog-container {
+  padding: 24px;
+  text-align: center;
+  background-color: var(--text-white);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-title {
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-light-H2-color-2);
+}
+
+.dialog-message {
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+  color: var(--text-dark-color);
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 10;
+  background-color: var(--btn-main-color);
+  color: var(--text-white);
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--btn-secondary-color);
+  cursor: pointer;
+}

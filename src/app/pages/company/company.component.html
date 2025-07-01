@@ -1,0 +1,195 @@
+<header class="header">
+  <nav>
+    <div class="nav-bar">
+      <div class="logo">
+        <a href="#"><img src="logo.png" alt="logo" /></a>
+      </div>
+      <div class="nav-menu-btn" id="menu-btn" (click)="toggleMenu()">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+    <ul class="nav-links" id="nav-links" [class.open]="isMenuOpen">
+      <li><a [routerLink]="['/company']" fragment="home">Início</a></li>
+      <li><a [routerLink]="['/company']" fragment="benefits">Benefícios</a></li>
+      <li><a [routerLink]="['/company']" fragment="more-information">Mais informações</a></li>
+      <li><a [routerLink]="['/company']" fragment="features">Funcionalidades</a></li>
+      <li><a [routerLink]="['/company']" fragment="doubt">Dúvidas</a></li>
+    </ul>
+    <div class="header-buttons">
+      <button class="btn experts-btn">Criar conta</button>
+      <button class="btn nav-btn" [routerLink]="['/login']">Entrar</button>
+    </div>
+  </nav>
+  <div class="section-container header-container" id="home">
+    <h1>Transforme excedentes em oportunidade</h1>
+    <p>Conectamos distribuidores a grandes compradores por meio de leilões inteligentes que reduzem desperdícios e otimizam estoques.</p>
+  </div>
+</header>
+
+<section class="section-container booking-container" id="benefits">
+  <div class="booking-form">
+    <div class="about-grid">
+      <div class="about-content">
+        <p class="section-subheader">BENEFÍCIOS</p>
+        <h2 class="section-header">Sobre a Plataforma</h2>
+        <p class="para">
+          Nossa solução conecta distribuidores — incluindo centrais de abastecimento, mercados e pequenos produtores — a grandes compradores, como restaurantes, padarias, supermercados, ONGs e cooperativas. Por meio de um sistema de leilão inteligente, produtos próximos ao vencimento são negociados a preços competitivos, evitando o desperdício e gerando economia para todos os envolvidos.
+        </p>
+        <br />
+        <p class="para">
+          Tudo isso em uma plataforma simples, confiável e pensada para transformar o futuro do abastecimento alimentar.
+        </p>
+      </div>
+      <div class="about-list">
+        <div class="about-item">
+          <span><i class="fa-solid fa-money-bill-trend-up"></i></span>
+          <h4>Economize comprando produtos antes do vencimento</h4>
+        </div>
+        <div class="about-item">
+          <span><i class="fa-solid fa-robot"></i></span>
+          <h4>IA prevê demandas e otimiza seus estoques</h4>
+        </div>
+        <div class="about-item">
+          <span><i class="fa-solid fa-people-arrows"></i></span>
+          <h4>Negocie direto com distribuidores de todo porte</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-container about-container" id="more-information">
+  <div class="about-content">
+    <p class="section-subheader">MAIS INFORMAÇÕES</p>
+    <h2 class="section-header">Soluções inteligentes para sua cadeia de abastecimento</h2>
+    <p class="section-description">
+      Nossa plataforma foi pensada para resolver dois grandes desafios enfrentados diariamente por empresas do setor alimentício: o desperdício de produtos perecíveis e a dificuldade de manter estoques otimizados.
+      <br /><br />
+      Com um modelo de leilão dinâmico e transparente, oferecemos às empresas a oportunidade de adquirir alimentos próximos ao vencimento com preços altamente competitivos. Isso significa economia imediata e responsabilidade social na prática.
+      <br /><br />
+      Além disso, utilizamos Inteligência Artificial para analisar padrões de consumo e prever demandas, ajudando sua empresa a planejar melhor, reduzir perdas e garantir maior eficiência operacional.
+    </p>
+    <div class="header-buttons">
+      <button class="btn learn-more-btn">
+        Saiba mais
+        <i class="fa-solid fa-angles-right"></i>
+      </button>
+      <button class="btn experts-more-btn" [routerLink]="['/company']" fragment="doubt">
+        Fale com especialistas
+        <i class="fa-solid fa-angles-right"></i>
+      </button>
+    </div>
+  </div>
+  <div class="image-stack">
+    <img src="/backgrounds/more-information(2).png" alt="about" />
+    <img src="/backgrounds/more-information(1).png" alt="about" />
+  </div>
+</section>
+
+<section class="section-container blog-container" id="features">
+  <p class="section-subheader">FUNCIONALIDADES QUE GERAM RESULTADOS</p>
+  <h2 class="section-header">Tecnologia e eficiência para transformar sua operação</h2>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <img src="Stock-image.png" alt="blog" />
+        <h4>Controle de Estoque Automatizado</h4>
+        <p>
+          Gerencie entradas e saídas com precisão, evite rupturas e minimize desperdícios com alertas e histórico completo.
+        </p>
+      </div>
+      <div class="blog-card">
+        <img src="Statistics-image.png" alt="blog" />
+        <h4>Estatísticas e Impacto Social</h4>
+        <p>
+          Acompanhe em tempo real o quanto sua empresa está economizando e contribuindo para a redução do desperdício de alimentos.
+        </p>
+      </div>
+      <div class="blog-card">
+        <img src="Reports-image.png" alt="blog" />
+        <h4>Relatórios Administrativos Inteligentes</h4>
+        <p>
+          Tome decisões mais estratégicas com acesso a dados filtrados por local, período, tipo de alimento e status de venda.
+        </p>
+      </div>
+    </div>
+</section>
+
+<section class="doubt" id="doubt">
+  <div class="doubt-container">
+    <p class="section-subheader-doubt">TIRE SUAS DÚVIDAS</p>
+    <h2 class="section-header-doubt">
+      Estamos aqui para esclarecer suas dúvidas e ajudar no que for necessário.
+    </h2>
+    <form action="/">
+      <input type="text" id="name" name="name" required placeholder="Nome" autocomplete="off">
+      <input type="text" id="subject" name="subject" required placeholder="Assunto" autocomplete="off" maxlength="18">
+      <textarea type="text" id="content" name="content" required></textarea>
+      <button class="btn btn-primary">Enviar</button>
+    </form>
+    <p class="para">
+      Ao enviar este formulário, você concorda com os
+      <a href="#">termos de uso</a> e <a href="#">política de Privacidade.</a>
+    </p>
+  </div>
+</section>
+
+<section class="explore" id="explore">
+  <div class="vertical-text">
+    <h6>PARTICIPE.AI</h6>
+    <hr>
+  </div>
+  <h2 class="section-header">CADASTRE SUA EMPRESA</h2>
+  <p class="section-description">
+    Cadastre-se e conecte sua empresa a uma rede inteligente de distribuição sustentável
+  </p>
+  <button class="btn-footer">Criar conta</button>
+</section>
+
+
+<footer class="footer" id="contact">
+  <div class="section-container footer-container">
+    <div class="footer-col">
+      <div class="logo">
+        <a href="#home"><img src="logo.png" alt="logo" /></a>
+      </div>
+      <p class="section-description">
+        A Participe.ai é uma multiplataforma que centraliza soluções sustentáveis, facilitando o acesso a práticas sustentáveis sem a necessidade de múltiplos recursos dispersos.
+      </p>
+      <button class="btn" (click)="openDialog('learn-more')">Saiba mais</button>
+    </div>
+    <div class="footer-col">
+      <h4>LINKS RÁPIDOS</h4>
+      <ul class="footer-links">
+        <li><a [routerLink]="['/company']" fragment="home">Início</a></li>
+        <li><a [routerLink]="['/company']" fragment="benefits">Benefícios</a></li>
+        <li><a [routerLink]="['/company']" fragment="more-information">Mais informações</a></li>
+        <li><a [routerLink]="['/company']" fragment="features">Funcionalidades</a></li>
+        <li><a [routerLink]="['/company']" fragment="doubt">Dúvidas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>FUNCIONALIDADES</h4>
+      <ul class="footer-links">
+        <li><a [routerLink]="['/company']" fragment="features">Controle de Estoque Automatizado</a></li>
+        <li><a [routerLink]="['/company']" fragment="features">Estatísticas e Impacto Social</a></li>
+        <li><a [routerLink]="['/company']" fragment="features">Relatórios Administrativos Inteligentes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>CONTATE-NOS</h4>
+      <ul class="footer-links">
+        <li><a href="#">participe.ai&#64;gmail.com</a></li>
+      </ul>
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    Copyright © 2025 <span>Participe.ai.</span> Todos os direitos reservados.
+  </div>
+</footer>
+

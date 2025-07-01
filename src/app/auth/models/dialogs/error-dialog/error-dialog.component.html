@@ -1,0 +1,10 @@
+<div class="dialog-container">
+  <h2 class="dialog-title error-title">{{ data.title }}</h2>
+  <p class="dialog-message">{{ data.message }}</p>
+  <ul *ngIf="data.details && data.details.length > 0" class="error-details">
+    <li *ngFor="let detail of data.details">{{ detail }}</li>
+  </ul>
+  <div class="dialog-actions">
+    <button mat-flat-button color="warn" (click)="onCloseClick()">Entendi</button>
+  </div>
+</div>

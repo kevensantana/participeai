@@ -1,0 +1,115 @@
+<div class="container faq-container">
+  <header class="hero-header">
+    <div class="header-overlay"></div>
+    <div class="header-content">
+      <i class="fas fa-question-circle header-icon"></i>
+      <h1>Central de Ajuda</h1>
+      <p>Encontre respostas para suas dúvidas</p>
+    </div>
+    <div class="decorative-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+    </div>
+  </header>
+  <main class="main-content">
+    <div class="content-grid">
+      <section class="faq-section">
+        <div class="section-header">
+          <h2>Perguntas Frequentes</h2>
+          <p>Confira as dúvidas mais comuns de nossos usuários</p>
+        </div>
+        <div>
+          <div
+            class="faq-item"
+            *ngFor="let question of questions"
+            (click)="toggleAccordion(question)"
+            [class.open]="question.open"
+          >
+            <div class="faq-question">
+              <h3>{{ question.title }}</h3>
+              <i class="fas fa-chevron-down faq-icon" [class.rotated]="question.open"></i>
+            </div>
+            <div class="faq-answer" *ngIf="question.open">
+              <div class="answer-content">{{ question.content }}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="contact-section">
+        <div class="section-header">
+          <h2>Ainda tem dúvidas?</h2>
+          <p>Envie sua pergunta e nossa equipe responderá em breve</p>
+        </div>
+        <div class="contact-card">
+          <div class="card-header">
+            <h3><i class="fas fa-comment-dots"></i> Formulário de Contato</h3>
+            <p>Preencha os campos abaixo com sua dúvida</p>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="type">
+                <i class="fas fa-tag"></i> Tipo de Dúvida
+              </label>
+              <select id="type" name="type" required>
+                <option value="">Selecione o tipo de dúvida</option>
+                <option value="produto">Produto</option>
+                <option value="pagamento">Pagamento</option>
+                <option value="entrega">Entrega</option>
+                <option value="conta">Conta</option>
+                <option value="tecnico">Suporte Técnico</option>
+                <option value="outros">Outros</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="name">
+                <i class="fas fa-user"></i> Nome Completo
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Digite seu nome completo"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email"> <i class="fas fa-envelope"></i> Email </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Digite seu email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="message">
+                <i class="fas fa-comment-dots"></i> Sua Dúvida
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Descreva sua dúvida detalhadamente..."
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Enviar Dúvida</button>
+          </form>
+        </div>
+        <div class="response-time-card">
+          <div class="response-time-content">
+            <div class="response-icon">
+              <i class="fas fa-question-circle"></i>
+            </div>
+            <div class="response-text">
+              <h4>Tempo de Resposta</h4>
+              <p>Respondemos em até 24 horas úteis</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>

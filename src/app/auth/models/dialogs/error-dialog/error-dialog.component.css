@@ -1,0 +1,58 @@
+/* Reutilize os estilos comuns do diálogo aqui */
+.dialog-container {
+  padding: 24px;
+  text-align: center;
+  background-color: var(--text-white);
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-title {
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--text-light-H2-color-2);
+}
+
+.dialog-message {
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+  color: var(--text-dark-color);
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 10;
+  background-color: var(--btn-main-color);
+  color: var(--text-white);
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--btn-secondary-color);
+  cursor: pointer;
+}
+
+/* Estilos específicos para o diálogo de erro */
+.error-title {
+  color: #d9534f; /* Um vermelho mais forte para o título de erro */
+}
+
+.error-details {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 20px;
+  text-align: left;
+  color: #d9534f;
+  font-size: 0.95rem;
+}
+
+.error-details li {
+  margin-bottom: 5px;
+}

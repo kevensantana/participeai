@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="product-add-wrapper">
+    <h2>Adicionar Produto</h2>
+
+    <form (ngSubmit)="onSubmit()" #form="ngForm" class="product-form">
+      <div class="form-column">
+        <label>
+          Nome:
+          <input type="text" name="name" [(ngModel)]="produto.name" required />
+        </label>
+
+        <label>
+          Preço:
+          <input type="number" name="price" [(ngModel)]="produto.price" required min="0" />
+        </label>
+
+        <label>
+          Quantidade:
+          <input type="number" name="quantity" [(ngModel)]="produto.quantity" required min="1" />
+        </label>
+
+        <label>
+          Categoria:
+          <select name="category" [(ngModel)]="produto.category" required>
+            <option value="">Selecione</option>
+            <option value="hortifruti">Verduras</option>
+            <option value="padaria">Orgânicos</option>
+            <option value="laticinios">Legumes</option>
+            <option value="limpeza">Frutas</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="form-column">
+        <label>
+          Descrição:
+          <textarea name="description" [(ngModel)]="produto.description" required></textarea>
+        </label>
+
+        <label>
+          URL da Imagem:
+          <input type="text" name="imageUrl" [(ngModel)]="produto.imageUrl" />
+        </label>
+      </div>
+
+      <button type="submit" [disabled]="!form.valid">Salvar Produto</button>
+    </form>
+  </div>
+</div>

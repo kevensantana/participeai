@@ -1,0 +1,83 @@
+.container {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+
+.product-add-wrapper {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.product-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-column {
+  flex: 1;
+  min-width: 300px;
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #593a27;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 6px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+textarea {
+  resize: vertical;
+  height: 205px;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #84BE0E;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+button:disabled {
+  background-color: #aacd53;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #6a9407;
+}
+
+@media (max-width: 768px) {
+  .product-form {
+    flex-direction: column;
+  }
+}

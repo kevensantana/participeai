@@ -1,0 +1,308 @@
+<app-product-header></app-product-header>
+
+<main class="container main-content">
+  <div class="container">
+    <div class="page-header">
+      <div class="page-title-section">
+        <h1 class="page-title">
+          <i class="fa-regular fa-heart"></i>
+          Meus Favoritos
+          <span class="item-count-badge">3 itens</span>
+        </h1>
+        <div class="search-wrapper">
+          <div class="search-container">
+            <svg
+              class="search-icon"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input
+              type="text"
+              placeholder="Buscar favoritos..."
+              class="search-input"
+            />
+          </div>
+        </div>
+        <div class="page-controls">
+          <div class="custom-select-wrapper">
+            <i class="fa-solid fa-filter select-icon"></i>
+            <select class="control-select">
+              <option value="all">Todas categorias</option>
+              <option value="vegetais">Vegetais</option>
+              <option value="frutas">Frutas</option>
+              <option value="padaria">Padaria</option>
+              <option value="laticinios">Laticínios</option>
+              <option value="cereais">Cereais</option>
+              <option value="bebidas">Bebidas</option>
+              <option value="doces">Doces</option>
+            </select>
+          </div>
+          <select class="control-select">
+            <option value="recent">Mais recentes</option>
+            <option value="name">Nome A-Z</option>
+            <option value="price-low">Menor preço</option>
+            <option value="price-high">Maior preço</option>
+            <option value="rating">Melhor avaliação</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="favorites-tabs">
+      <input type="radio" id="tab-all" name="favorites-tab" checked />
+      <input type="radio" id="tab-available" name="favorites-tab" />
+      <input type="radio" id="tab-unavailable" name="favorites-tab" />
+
+      <div class="tab-navigation">
+        <label for="tab-all" class="tab-button">Todos (3)</label>
+        <label for="tab-available" class="tab-button">Disponíveis (2)</label>
+        <label for="tab-unavailable" class="tab-button"
+          >Indisponíveis (1)</label
+        >
+      </div>
+      <div class="tab-content-wrapper">
+        <div class="tab-content">
+          <div class="favorites-grid">
+            <!-- Favorite Product 1 -->
+            <div class="favorite-card">
+              <div class="product-image-container">
+                <img
+                  src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop"
+                  alt="Salada Orgânica Premium"
+                  class="product-image"
+                />
+                <button class="remove-favorite-button">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polyline points="3,6 5,6 21,6"></polyline>
+                    <path
+                      d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="product-content">
+                <div class="product-header">
+                  <h3 class="product-name">Salada Orgânica Premium</h3>
+                  <span class="product-price">R$ 24,90</span>
+                </div>
+                <p class="product-company">Horta Verde</p>
+                <div class="product-rating">
+                  <svg
+                    class="star-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <polygon
+                      points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+                    ></polygon>
+                  </svg>
+                  <span class="rating-value">4.8</span>
+                </div>
+                <div class="product-meta">
+                  <div class="delivery-info">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12,6 12,12 16,14"></polyline>
+                    </svg>
+                    <span>25 min</span>
+                  </div>
+                  <span class="expiry-date">Validade: 15/06/2025</span>
+                </div>
+              </div>
+              <div class="product-footer">
+                <button class="add-to-cart-button">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8"
+                    ></path>
+                  </svg>
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Favorite Product 2 -->
+            <div class="favorite-card">
+              <div class="product-image-container">
+                <img
+                  src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&h=300&fit=crop"
+                  alt="Pão Integral Artesanal"
+                  class="product-image"
+                />
+                <button class="remove-favorite-button">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polyline points="3,6 5,6 21,6"></polyline>
+                    <path
+                      d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="product-content">
+                <div class="product-header">
+                  <h3 class="product-name">Pão Integral Artesanal</h3>
+                  <span class="product-price">R$ 12,90</span>
+                </div>
+                <p class="product-company">Padaria Artesanal</p>
+                <div class="product-rating">
+                  <svg
+                    class="star-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <polygon
+                      points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8,91,8.26"
+                    ></polygon>
+                  </svg>
+                  <span class="rating-value">4.7</span>
+                </div>
+                <div class="product-meta">
+                  <div class="delivery-info">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12,6 12,12 16,14"></polyline>
+                    </svg>
+                    <span>30 min</span>
+                  </div>
+                  <span class="expiry-date">Validade: 10/06/2025</span>
+                </div>
+              </div>
+              <div class="product-footer">
+                <button class="add-to-cart-button">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m0 0h8"
+                    ></path>
+                  </svg>
+                  Adicionar ao carrinho
+                </button>
+              </div>
+            </div>
+
+            <!-- Unavailable Product -->
+            <div class="favorite-card unavailable">
+              <div class="product-image-container">
+                <img
+                  src="https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&h=300&fit=crop"
+                  alt="Suco Natural de Laranja"
+                  class="product-image"
+                />
+                <span class="unavailable-badge">Indisponível</span>
+                <button class="remove-favorite-button">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polyline points="3,6 5,6 21,6"></polyline>
+                    <path
+                      d="m19,6v14a2,2 0 0,1 -2,2H7a2,2 0 0,1 -2,-2V6m3,0V4a2,2 0 0,1 2,-2h4a2,2 0 0,1 2,2v2"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="product-content">
+                <div class="product-header">
+                  <h3 class="product-name">Suco Natural de Laranja</h3>
+                  <span class="product-price">R$ 9,90</span>
+                </div>
+                <p class="product-company">Sucos Vitais</p>
+                <div class="product-rating">
+                  <svg
+                    class="star-icon"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <polygon
+                      points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+                    ></polygon>
+                  </svg>
+                  <span class="rating-value">4.4</span>
+                </div>
+                <div class="product-meta">
+                  <div class="delivery-info">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12,6 12,12 16,14"></polyline>
+                    </svg>
+                    <span>10 min</span>
+                  </div>
+                  <span class="expiry-date">Validade: 09/06/2025</span>
+                </div>
+              </div>
+              <div class="product-footer">
+                <button class="add-to-cart-button" disabled>
+                  Indisponível
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

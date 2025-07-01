@@ -1,0 +1,40 @@
+<div class="container">
+  <div *ngIf="!carregando; else carregandoTpl">
+    <div *ngIf="produto; else naoEncontradoTpl">
+      <h2 class="product-title">{{ produto.name }}</h2>
+
+      <div class="product-info">
+        <img [src]="produto.imageUrl" [alt]="produto.name" class="product-image" />
+
+        <div class="product-details">
+          <p><strong>Descrição:</strong> {{ produto.description }}</p>
+          <p><strong>Categoria:</strong> {{ produto.category || 'Não especificada' }}</p>
+          <p><strong>Estoque disponível:</strong> {{ produto.stock || 'Indefinido' }}</p>
+          <p><strong>Preço:</strong> R$ {{ produto.price | number:'1.2-2' }}</p>
+          <p>
+            <strong>Avaliação:</strong>
+            <span class="stars" *ngIf="produto.rating; else semAvaliacao">
+            <ng-container *ngFor="let star of [1,2,3,4,5]">
+              <span [class.filled]="getRate() >= star">&#9733;</span>
+            </ng-container>
+          ({{ getRate() }})
+            </span>
+            <ng-template #semAvaliacao>Sem avaliação</ng-template>
+          </p>
+
+
+
+          <button class="btn-back" routerLink="/cart">← Voltar para Loja</button>
+        </div>
+      </div>  
+    </div>
+  </div>
+
+  <ng-template #carregandoTpl>
+    <p>Carregando...</p>
+  </ng-template>
+
+  <ng-template #naoEncontradoTpl>
+    <p>Produto não encontrado.</p>
+  </ng-template>
+</div>

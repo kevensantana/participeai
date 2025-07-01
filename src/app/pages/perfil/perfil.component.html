@@ -1,0 +1,191 @@
+<div class="container profile-container">
+  <aside class="sidebar">
+    <div class="profile-img">
+      <img src="/time/keven.jpeg" alt="Profile Picture" />
+    </div>
+    <h3>{{ usuario.name }}</h3>
+    <p class="role">Tipo de conta: {{ usuario.tipoConta || 'Pessoa Física' }}</p>
+    <nav class="menu">
+      <a href="#" [class.active]="formularioAtivo === 'informacoes'" (click)="mostrarFormulario('informacoes', $event)">
+        <i class="fa-solid fa-user"></i>Informações básicas
+      </a>
+      <a href="#" [class.active]="formularioAtivo === 'residencia'" (click)="mostrarFormulario('residencia', $event)">
+        <i class="fa-solid fa-house"></i>Residência
+      </a>
+      <a href="#" [class.active]="formularioAtivo === 'senha'" (click)="mostrarFormulario('senha', $event)">
+        <i class="fa-solid fa-lock"></i>Alterar a senha
+      </a>
+      <a href="#" [class.active]="formularioAtivo === 'deletar'" (click)="mostrarFormulario('deletar', $event)">
+        <i class="fa-solid fa-trash"></i>Deletar conta
+      </a>
+    </nav>
+  </aside>
+
+  <!-- Informações Básicas -->
+  <section class="main-content" *ngIf="formularioAtivo === 'informacoes'">
+    <form class="form" (ngSubmit)="salvarInformacoes()">
+      <h2>Informações básicas</h2>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input id="nome" type="text" [(ngModel)]="usuario.name" name="nome" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" [(ngModel)]="usuario.email" name="email" />
+        </div>
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input id="telefone" type="text" [(ngModel)]="usuario.telefone" name="telefone" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="cpf">CPF</label>
+          <input id="cpf" type="text" [(ngModel)]="usuario.cpf" name="cpf" />
+        </div>
+        <div class="form-group">
+          <label for="data-nascimento">Data de nascimento</label>
+          <input id="data-nascimento" type="date" [(ngModel)]="usuario.birthDate" name="dataNascimento" />
+        </div>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn save">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <i class="fa-solid fa-floppy-disk"></i>
+            </div>
+          </div>
+          <span>Salvar</span>
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Residência -->
+  <section class="main-content" id="residencia" *ngIf="formularioAtivo === 'residencia' && usuario.residencia">
+    <form class="form" (ngSubmit)="salvarResidencia()">
+      <h2>Residência</h2>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="cep">CEP</label>
+          <input id="cep" type="text" [(ngModel)]="usuario.residencia.cep" name="cep" />
+        </div>
+        <div class="form-group">
+            <label for="logradouro">Logradouro</label>
+            <input id="logradouro" type="text" [(ngModel)]="usuario.residencia.logradouro" name="logradouro" />
+        </div>
+      </div>
+      <div class="grid-2">
+          <div class="form-group">
+            <label for="numero">Número</label>
+            <input id="numero" type="text" [(ngModel)]="usuario.residencia.numero" name="numero" />
+          </div>
+          <div class="form-group">
+            <label for="bairro">Bairro</label>
+            <input id="bairro" type="text" [(ngModel)]="usuario.residencia.bairro" name="bairro" />
+          </div>
+          <div class="form-group">
+            <label for="complemento">Complemento</label>
+            <input id="complemento" type="text" [(ngModel)]="usuario.residencia.complemento" name="complemento" />
+          </div>
+      </div>
+      <div class="grid-2">
+          <div class="form-group">
+            <label for="cidade">Cidade</label>
+            <input id="cidade" type="text" [(ngModel)]="usuario.residencia.cidade" name="cidade" />
+          </div>
+          <div class="form-group">
+            <label for="estado">Estado</label>
+            <select id="estado" [(ngModel)]="usuario.residencia.estado" name="estado">
+              <option>Bahia</option>
+              <option>São Paulo</option>
+              <option>Rio de Janeiro</option>
+            </select>
+          </div>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn save">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <i class="fa-solid fa-floppy-disk"></i>
+            </div>
+          </div>
+          <span>Salvar</span>
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <section class="main-content" id="alterarSenha" *ngIf="formularioAtivo === 'senha'">
+    <form class="form" (ngSubmit)="alterarSenha()">
+      <h2>Alterar a senha</h2>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="senha-atual">Senha atual</label>
+          <input id="senha-atual" type="password" [(ngModel)]="senhaAtual" name="senhaAtual" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="nova-senha">Nova senha</label>
+          <input id="nova-senha" type="password" [(ngModel)]="novaSenha" name="novaSenha" />
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label for="confirmar-senha">Confirmar nova senha</label>
+          <input id="confirmar-senha" type="password" [(ngModel)]="confirmarSenha" name="confirmarSenha" />
+        </div>
+        <div class="senha-info">
+          <span>
+              Requisitos de senha:<br />
+              Mínimo de 6 caracteres;<br />
+              Máximo de 10 caracteres;
+          </span>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn save">
+          <div class="svg-wrapper-1">
+            <div class="svg-wrapper">
+              <i class="fa-solid fa-floppy-disk"></i>
+            </div>
+          </div>
+          <span>Salvar</span>
+        </button>
+      </div>
+    </form>
+  </section>
+
+    <!-- Deletar Conta -->
+  <section class="main-content" id="deletarConta" *ngIf="formularioAtivo === 'deletar'">
+    <form class="form" (ngSubmit)="deletarConta()">
+      <h2>Deletar conta</h2>
+      <p>Você tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita.</p>
+      <div class="conta-info">
+        <div class="toggle-container">
+          <label class="switch">
+            <input type="checkbox" [(ngModel)]="confirmarExclusao" name="confirmarExclusao" />
+            <span class="slider"></span>
+          </label>
+          <span class="label-text">
+            <strong>Confirme</strong> Quero excluir minha conta.
+          </span>
+        </div>
+        <div class="actions">
+          <button type="submit" class="btn delete" [disabled]="!confirmarExclusao">
+            <div class="svg-wrapper-1">
+              <div class="svg-wrapper">
+                <i class="fa-solid fa-trash"></i>
+              </div>
+            </div>
+            <span>Excluir Conta</span>
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
+</div>

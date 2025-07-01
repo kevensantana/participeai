@@ -1,0 +1,154 @@
+<app-product-header
+  (filtroNomeChange)="atualizarFiltroNome($event)"
+></app-product-header>
+
+<main class="container main-content">
+  <div class="container">
+    <div class="catalog-container">
+      <aside class="filters-sidebar">
+        <div class="filter-group">
+          <h3 class="filter-title">Filtrar por categoria</h3>
+          <div class="category-filter">
+            <input
+              type="radio"
+              id="cat-all"
+              name="category"
+              value="all"
+              (change)="filtrarCategoria($event)"
+              checked
+            />
+            <label for="cat-all" class="category-btn">Todos</label>
+
+            <input
+              type="radio"
+              id="cat-vegetais"
+              name="category"
+              value="vegetais"
+              (change)="filtrarCategoria($event)"
+            />
+            <label for="cat-vegetais" class="category-btn">Vegetais</label>
+
+            <input
+              type="radio"
+              id="cat-frutas"
+              name="category"
+              value="frutas"
+              (change)="filtrarCategoria($event)"
+            />
+            <label for="cat-frutas" class="category-btn">Frutas</label>
+
+            <input
+              type="radio"
+              id="cat-padaria"
+              name="category"
+              value="padaria"
+              (change)="filtrarCategoria($event)"
+            />
+            <label for="cat-padaria" class="category-btn">Padaria</label>
+
+            <input
+              type="radio"
+              id="cat-laticinios"
+              name="category"
+              value="laticinios"
+              (change)="filtrarCategoria($event)"
+            />
+            <label for="cat-laticinios" class="category-btn">Laticínios</label>
+
+            <input
+              type="radio"
+              id="cat-cereais"
+              name="category"
+              value="cereais"
+              (change)="filtrarCategoria($event)"
+            />
+            <label for="cat-cereais" class="category-btn">Cereais</label>
+
+            <input
+              type="radio"
+              id="cat-bebidas"
+              name="category"
+              value="bebidas"
+              (change)="filtrarCategoria($event)"
+            />
+            <label for="cat-bebidas" class="category-btn">Bebidas</label>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-title">Data de validade</h3>
+          <select class="select-input">
+            <option value="all">Todos</option>
+            <option value="week">Próxima semana</option>
+            <option value="month">Próximo mês</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-title">Faixa de preço</h3>
+          <div class="price-range">
+            <input
+              type="range"
+              min="0"
+              max="100"
+              [(ngModel)]="precoMaximo"
+              (input)="filtrarPorPreco()"
+              class="range-slider"
+            />
+            <div class="price-labels">
+              <span>R$ 0</span>
+              <span>R$ {{ precoMaximo }}</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+      <section class="products-section">
+        <h2 class="section-title">Catálogo de Alimentos</h2>
+        <div class="products-grid">
+          <div class="product-card" *ngFor="let produto of produtosFiltrados">
+            <div class="product-image-container">
+              <img
+                [src]="produto.imageUrl"
+                [alt]="produto.name"
+                class="product-image"
+              />
+            </div>
+            <div class="product-content">
+              <div class="product-header">
+                <h3 class="product-name">{{ produto.name }}</h3>
+                <span class="product-price"
+                  >R$ {{ produto.price | number : "1.2-2" }}</span
+                >
+              </div>
+              <p class="product-company">{{ produto.description }}</p>
+              <div class="product-rating">
+                <i class="fa-solid fa-star"></i>
+                <span class="rating-value">4.8</span>
+              </div>
+              <div class="product-meta">
+                <div class="delivery-info">
+                  <i class="fa-regular fa-clock"></i>
+                  <span>25 min</span>
+                </div>
+                <span class="expiry-date">Validade: 15/06/2025</span>
+              </div>
+            </div>
+            <div class="product-footer">
+              <button class="add-to-cart-button">
+                <i class="fa-solid fa-cart-plus"></i>
+                Adicionar ao carrinho
+              </button>
+              <button
+                class="heart-button"
+                (click)="favoritarProduto(produto)"
+              >
+                <i [ngClass]="isFavorito(produto) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'"></i>
+              </button>
+            </div>
+          </div>
+          <ng-template #loading>
+            <p>Carregando produtos...</p>
+          </ng-template>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,13 @@
+.close-btn {
+  color: white !important;
+  background-color: #eb4132;
+}
+
+.close-btn:hover {
+  background-color: #e66c64; /* Tom mais escuro ao passar o mouse */
+}
+
+.dialog-description {
+  white-space: pre-line;
+  line-height: 1.6; /* opcional, melhora a leitura */
+}

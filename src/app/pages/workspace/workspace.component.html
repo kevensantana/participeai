@@ -1,0 +1,27 @@
+<div class="container workspace-container">
+  <div class="">
+    <!-- Banner Carousel -->
+    <app-carousel></app-carousel>
+
+    <!-- Products Section -->
+    <section class="section">
+      <div class="products-header">
+        <h2 class="products-title">Nossos Produtos</h2>
+        <p class="products-description">
+          Soluções inovadoras para uma gestão sustentável e eficiente dos seus
+          recursos
+        </p>
+      </div>
+
+      <div class="products-grid">
+        <app-product-card
+          *ngFor="let product of filteredProducts"
+          [product]="product"
+          [isExpanded]="product.isExpanded"
+          [isActive]="product.isActive"
+          (click)="toggleProduct(product.id)"
+        ></app-product-card>
+      </div>
+    </section>
+  </div>
+</div>

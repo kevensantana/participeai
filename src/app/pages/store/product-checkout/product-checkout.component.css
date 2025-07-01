@@ -1,0 +1,66 @@
+.payment-methods label {
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+
+.payment-methods input,
+.payment-methods textarea {
+  width: 100%;
+  padding: 10px 0.875rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-top: 6px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  font-family: Arial, sans-serif;
+  color: var(--brown-dark);
+  resize: vertical;
+  margin-bottom: 1rem;
+}
+
+.payment-methods input:focus,
+.payment-methods textarea:focus {
+  border-color: var(--green-light);
+  outline: none;
+}
+
+.payment-methods input.ng-invalid.ng-touched,
+.payment-methods textarea.ng-invalid.ng-touched {
+  border-color: #f44336;
+}
+
+.payment-methods select {
+  width: 100%;
+  padding: 10px 0.875rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  font-size: 0.875rem;
+  color: #0f172a;
+  outline: none;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+.payment-methods select:focus {
+  border-color: #84be0e;
+  box-shadow: 0 0 0 2px rgba(132, 190, 14, 0.1);
+}
+
+.payment-methods select.ng-invalid.ng-touched {
+  border-color: #f44336;
+}
+
+@media (min-width: 768px) {
+  .order-summary,
+  .checkout-form {
+    display: inline-block;
+    vertical-align: top;
+    width: 48%;
+  }
+
+  .checkout-form {
+    margin-left: 4%;
+  }
+}

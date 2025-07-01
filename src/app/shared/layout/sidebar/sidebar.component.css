@@ -1,0 +1,174 @@
+.sidebar {
+  position: fixed;
+  width: 300px;
+  height: 100vh;
+  background: #F4F7FC;
+  transition: 0.5s;
+  padding-left: 10px;
+}
+
+.sidebar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -10px;
+  width: 10px;
+  height: 100%;
+  background-color: var(--green-light);
+}
+
+.sidebar.collapsed::after {
+  right: -10px;
+}
+
+.sidebar.collapsed {
+  position: fixed;
+  width: 85px;
+  height: 100vh;
+  transition: 0.5s;
+  padding-left: 10px;
+}
+
+.sidebar ul {
+  position: relative;
+  height: 100vh;
+}
+
+.sidebar .Menulist {
+  margin-top: 140px;
+}
+
+.sidebar ul li {
+  position: relative;
+  list-style: none;
+}
+
+.sidebar ul li.active {
+  background: var(--green-light);
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+.sidebar ul li.active::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 5px 5px 0 5px var(--green-light);
+  background: transparent;
+}
+
+.sidebar ul li.active::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 5px -5px 0 5px var(--green-light);
+  background: transparent;
+}
+
+.sidebar ul li.logo {
+  margin-bottom: 50px;
+}
+
+.sidebar ul li.logo .icon {
+  font-size: 2em;
+  color: black;
+}
+
+.sidebar ul li.logo .text {
+  font-size: 1.2em;
+  font-weight: 500;
+  color: black;
+}
+
+.sidebar ul li a {
+  position: relative;
+  display: flex;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.sidebar ul li a .icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 60px;
+  padding-left: 10px;
+  height: 70px;
+  font-size: 1.5em;
+  color: #333;
+  transition: 0.5s;
+}
+
+.sidebar ul li a .text {
+    position: relative;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    font-weight: 1em;
+    color: #333;
+    padding-left: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: 0.5s;
+}
+
+.sidebar ul li.active a .icon i {
+  z-index: 10;
+  color: var(--green-light);
+}
+
+.sidebar ul li.active a .text {
+  color: #FFF;
+}
+
+.sidebar ul li:hover a .icon,
+.sidebar ul li:hover a .text {
+  color: var(--green-light);
+}
+
+.sidebar ul li.active a .icon::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  width: 60px;
+  background: #FFF;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.bottom {
+  width: 100%;
+  margin-top: 300px;
+}
+
+.bottom li a .icon::before {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  width: 60px;
+  background: var(--brown-light);
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.sidebar .bottom li:hover a .text {
+  color: var(--brown-light) !important;
+}
+
+.bottom li a .icon i {
+  z-index: 10;
+  color: #FFF;
+}
+
+.sidebar.collapsed ul li a .text {
+  display: none;
+}
