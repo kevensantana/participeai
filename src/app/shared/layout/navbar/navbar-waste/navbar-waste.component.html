@@ -1,0 +1,139 @@
+<header class="navbar">
+  <div class="navbar-container">
+
+    <div class="navbar-logo">
+      <img src="logo-dark.png" alt="Logo" />
+      <span class="separator">•</span>
+      <span class="product-name">Resíduos</span>
+    </div>
+
+    <nav class="navbar-nav">
+      <a [routerLink]="['/workspace']" routerLinkActive="active" class="nav-item">
+        <span>Início</span>
+      </a>
+      <a [routerLink]="['/map']" routerLinkActive="active" class="nav-item">
+        <span>Mapa</span>
+      </a>
+      <a [routerLink]="['/calculator']" routerLinkActive="active" class="nav-item">
+        <span>Calculadora</span>
+      </a>
+    </nav>
+
+    <div class="navbar-actions">
+      <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="notification-wrapper">
+        <button class="action-btn notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </button>
+      </div>
+
+      <div class="profile-wrapper" [class.active]="profileMenuOpen">
+        <button class="profile-btn" (click)="toggleProfileMenu()">
+          <img src="/time/keven.jpeg" alt="Keven Santana" />
+        </button>
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="profile-header">
+            <img src="/time/keven.jpeg" alt="Keven Santana" />
+            <h3>Keven Santana</h3>
+          </div>
+          <hr />
+          <div class="profile-menu">
+            <a href="/perfil" class="profile-menu-item">
+              <div class="profile-menu-icon">
+                <i class="fas fa-user"></i>
+              </div>
+              <span>Editar perfil</span>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="/login" class="profile-menu-item logout">
+              <div class="profile-menu-icon">
+                <i class="fas fa-sign-out-alt"></i>
+              </div>
+              <span>Sair</span>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mobile-menu" [class.active]="mobileMenuOpen" id="mobileMenu">
+    <div class="mobile-menu-content">
+      <a [routerLink]="['/workspace']" class="mobile-menu-item">
+        <i class="fas fa-home"></i>
+        <span>Início</span>
+      </a>
+
+      <div class="mobile-menu-section">
+        <div class="mobile-menu-header">
+          <i class="fas fa-box"></i>
+          <span>Produtos</span>
+        </div>
+        <div class="mobile-submenu">
+          <!-- <a [routerLink]="['/store']" class="mobile-submenu-item">
+            <i class="fas fa-apple-alt"></i>
+            <span>Alimentos</span>
+          </a> -->
+          <a  class="mobile-submenu-item">
+            <i class="fas fa-recycle"></i>
+            <span>Resíduos</span>
+          </a>
+          <a class="mobile-submenu-item">
+            <i class="fas fa-tint"></i>
+            <span>Água</span>
+          </a>
+          <a class="mobile-submenu-item">
+            <i class="fas fa-bolt"></i>
+            <span>Energia</span>
+          </a>
+        </div>
+
+        <hr class="diviser" />
+
+        <div class="mobile-menu-section">
+          <a class="mobile-menu-item">
+            <i class="fas fa-search"></i>
+            <span>Buscar</span>
+          </a>
+          <a [routerLink]="['/faq']" class="mobile-menu-item">
+            <i class="fas fa-circle-question"></i>
+            <span>Ajuda</span>
+          </a>
+          <a class="mobile-menu-item">
+            <i class="fas fa-bell"></i>
+            <span>Notificações <span class="notification-badge">3</span></span>
+          </a>
+        </div>
+
+        <hr />
+
+        <div class="mobile-menu-section">
+          <div class="mobile-menu-header">
+            <i class="fas fa-user"></i>
+            <span>Conta</span>
+          </div>
+          <div class="mobile-submenu">
+            <a href="/perfil" class="mobile-submenu-item">
+              <i class="fas fa-user"></i>
+              <span>Editar perfil</span>
+            </a>
+            <a href="/login" class="mobile-submenu-item logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Sair</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div
+  class="overlay"
+  [class.active]="productDropdownOpen || profileMenuOpen || mobileMenuOpen"
+  (click)="closeAllMenus()"
+></div>

@@ -23,7 +23,7 @@
               <input
                 type="text"
                 [(ngModel)]="user.name"
-                [ngClass]="{'input-error': errors.name}"
+                [ngClass]="{'input-error': errors['name']}"
                 name="name"
                 class="input-field"
                 autocomplete="off"
@@ -38,7 +38,7 @@
                 <input
                   type="text"
                   [(ngModel)]="user.cpf"
-                  [ngClass]="{'input-error': errors.cpf}"
+                  [ngClass]="{'input-error': errors['cpf']}"
                   name="cpf"
                   class="input-field"
                   autocomplete="off"
@@ -54,7 +54,7 @@
                 <input
                   type="date"
                   [(ngModel)]="user.birthDate"
-                  [ngClass]="{'input-error': errors.birthDate}"
+                  [ngClass]="{'input-error': errors['birthDate']}"
                   name="birthDate"
                   class="input-field no-placeholder"
                   autocomplete="off"
@@ -70,7 +70,7 @@
               <input
                 type="email"
                 [(ngModel)]="user.email"
-                [ngClass]="{'input-error': errors.email}"
+                [ngClass]="{'input-error': errors['email']}"
                 name="email"
                 class="input-field"
                 required
@@ -80,42 +80,72 @@
               <label>Email</label>
             </div>
 
-            <div class="double-input">
-              <div class="input-wrap">
-                <input
-                  type="password"
-                  [(ngModel)]="user.password"
-                  [ngClass]="{'input-error': errors.password}"
-                  name="password"
-                  required
-                  class="input-field"
-                  autocomplete="off"
-                  (input)="removeError('password')"
-              
-                />
-                <label>Senha</label>
-              </div>
-              <div class="input-wrap">
-                <input
-                  type="password"
-                  [(ngModel)]="user.confirmPassword"
-                  [ngClass]="{'input-error': errors.confirmPassword}"
-                  name="confirmPassword"
-                  required
-                  class="input-field"
-                  autocomplete="off"
-                  (input)="removeError('confirmPassword')"
-               
-                />
-                <label>Confirme a senha</label>
-              </div>
+            <div class="input-wrap">
+              <input
+                [type]="showPassword ? 'text' : 'password'"
+                [(ngModel)]="user.password"
+                (focus)="isTypingPassword = true"
+                (blur)="isTypingPassword = false"
+                (blur)="validatePassword()"
+                [ngClass]="{'input-error': errors['password']}"
+                name="password"
+                required
+                class="input-field"
+                autocomplete="off"
+                id="password"
+              />
+              <label for="password">Senha</label>
+              <span class="toggle-password"  (click)="togglePassword()"><i class="fa-solid fa-eye"></i></span>
             </div>
+
+            <div class="input-wrap">
+              <input
+                [type]="showConfirmPassword ? 'text' : 'password'"
+                [(ngModel)]="user.confirmPassword"
+                (focus)="isTypingConfirm = true"
+                (blur)="isTypingConfirm = false"
+                [ngClass]="{
+                  'input-error': errors['confirmPassword'],
+                  'input-success': user.confirmPassword && user.confirmPassword === user.password
+                }"
+                name="confirmPassword"
+                required
+                class="input-field"
+                autocomplete="off"
+                id="confirmPassword"
+                (input)="validateConfirmPassword()"
+              />
+              <label for="confirmPassword">Confirmar Senha</label>
+              <span class="toggle-password" (click)="toggleConfirmPassword()"><i class="fa-solid fa-eye"></i></span>
+            </div>
+
+                <!-- Requisitos de senha -->
+            <div class="password-requirements-container" *ngIf="isTypingPassword">
+              <ul class="password-requirements">
+                <li [class.valid]="passwordLengthValid">- Mínimo 8 caracteres</li>
+                <li [class.valid]="passwordHasLetter">- Contém letra maiuscula</li>
+                <li [class.valid]="passwordHasNumber">- Contém número</li>
+                <li [class.valid]="passwordHasSpecial">- Caractere especial</li>
+              </ul>
+            </div>
+
+         <div class="password-requirements-container" *ngIf="isTypingConfirm && senhaCoincide !== null">
+          <p
+            [style.color]="senhaCoincide ? 'green' : 'red'"
+            style="font-size: 0.75rem; margin-top: 0.25rem;"
+          >
+            {{ senhaCoincide ? '✔️ Senhas coincidem' : '❌ Senhas diferentes' }}
+          </p>
+        </div>
+
+
+
 
             <div class="input-wrap checkbox-wrap">
               <input
                 type="checkbox"
                 [(ngModel)]="user.acceptTerms"
-                [ngClass]="{'input-error': errors.acceptTerms}"
+                [ngClass]="{'input-error': errors['acceptTerms']}"
                 name="acceptTerms"
                 required
                 (change)="removeError('acceptTerms')"

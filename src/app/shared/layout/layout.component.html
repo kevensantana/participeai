@@ -1,12 +1,8 @@
-<div class="layout-container">
-  <div class="col">
-    <app-sidebar #sidebar></app-sidebar>
-  </div>
-  <div class="content-container">
-    <app-navbar
-      (toggleSidebar)="sidebar.toggleSidebar()"
-      (search)="onSearch($event)">
-    </app-navbar>
-    <router-outlet></router-outlet>
-  </div>
+<div class="container">
+  <app-navbar *ngIf="isWorkspace"></app-navbar>
+  <app-navbar-food *ngIf="isStore"></app-navbar-food>
+  <app-navbar-food *ngIf="isAdicionaProduto"></app-navbar-food>
+  <app-navbar-waste *ngIf="isWaste"></app-navbar-waste>
+  <app-navbar-waste *ngIf="isCalculator"></app-navbar-waste>
+  <router-outlet></router-outlet>
 </div>

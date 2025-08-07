@@ -1,0 +1,172 @@
+.content-tabs-section {
+  padding: 4rem 1rem;
+  background-color: var(--background);
+}
+
+.content-tabs-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-tabs-section .section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.content-tabs-section .section-header .section-title {
+  font-size: 2.5rem;
+  color: var(--text-black);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .content-tabs-section .section-header .section-title {
+    font-size: 3rem;
+  }
+}
+
+.content-tabs-section .section-header .section-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-gray-light);
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.content-tabs-section .tabs-container {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.content-tabs-section .tabs-nav {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  background: var(--muted);
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .content-tabs-section .tabs-nav {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .content-tabs-section .tabs-nav {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.content-tabs-section .tabs-nav .tab-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px solid transparent;
+  background: transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-black);
+}
+
+.content-tabs-section .tabs-nav .tab-button.active {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content-tabs-section .tabs-nav .tab-button .tab-icon {
+  font-size: 1.5rem;
+}
+
+.content-tabs-section .tabs-nav .tab-button .tab-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@media (min-width: 640px) {
+  .content-tabs-section .tabs-nav .tab-button .tab-title {
+    font-size: 1rem;
+  }
+}
+
+.content-tabs-section .tabs-content {
+  background: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.content-tabs-section .tab-pane {
+  display: none;
+}
+
+.content-tabs-section .tab-pane.active {
+  display: block;
+}
+
+.content-tabs-section .content-card {
+  padding: 2rem;
+}
+
+.content-tabs-section .content-card h3 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--text-black);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.content-tabs-section .content-card .content-date {
+  color: var(--text-gray-light);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.content-tabs-section .content-card .content-image {
+  width: 100%;
+  height: 16rem;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .content-tabs-section .content-card .content-image {
+    height: 20rem;
+  }
+}
+
+.content-tabs-section .content-card .content-text {
+  color: var(--text-black);
+  line-height: 1.7;
+}
+
+.content-tabs-section .content-card .content-text p {
+  margin-bottom: 1rem;
+}
+
+.content-tabs-section .content-card .content-text h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-light-h2);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.content-tabs-section .content-card .content-text ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.content-tabs-section .content-card .content-text ul li {
+  margin-bottom: 0.5rem;
+  color: var(--text-black);
+}

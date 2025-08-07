@@ -56,11 +56,11 @@ export class WorkspaceComponent implements OnInit, OnDestroy {
     {
       id: 'waste',
       type: 'waste',
-      title: 'Lixo',
+      title: 'Resíduos',
       description: 'Gestão sustentável de resíduos',
       icon: 'fa-solid fa-trash',
-      isActive: false,
-      isExpanded: false
+      isActive: true,
+      isExpanded: true
     }
   ];
 

@@ -17,7 +17,7 @@ export class AuthService {
   private readonly userApi = `${environment.apiBaseUrl}/users`;
   private readonly companyApi = `${environment.apiBaseUrl}/companies`;
   private readonly adminApi = `${environment.apiBaseUrl}/admin`;
-  private readonly realAuthUrl = `${environment.apiBaseUrl}/auth/login`;
+  private readonly realAuthUrl = `${environment.realApiUrl}/auth/login`;
 
   constructor(
     private http: HttpClient,

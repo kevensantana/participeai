@@ -18,6 +18,12 @@ import { ProductListComponent } from './pages/store/product-list/product-list.co
 import { ProductCartComponent } from './pages/store/product-cart/product-cart.component';
 import { ProductFavoriteComponent } from './pages/store/product-favorite/product-favorite.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
+import { MapComponent } from './pages/waste/map/map.component';
+import { CalculatorComponent } from './pages/waste/calculator/calculator.component';
+import { EducationComponent } from './pages/education/education.component';
+import { BlogComponent } from './pages/education/pages/blog/blog.component';
+import { BlogDetailComponent } from './pages/education/pages/blog/blog-detail/blog-detail.component';
+import { WritePostComponent } from './pages/education/pages/blog/write-post/write-post.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'landing', pathMatch: 'full'},
@@ -41,19 +47,27 @@ export const routes: Routes = [
       { path: 'notifications',  component: NotificationsComponent },
       { path: 'faq', component: FaqComponent },
       { path: 'store', component: ProductListComponent },
-      { path: 'add', component: ProductAddComponent },
+      { path: 'adicionaProduto', component: ProductAddComponent },
       { path: 'cart', component: ProductCartComponent },
       { path: 'favorite', component: ProductFavoriteComponent },
+      { path: 'map', component: MapComponent },
+      { path: 'calculator', component: CalculatorComponent },
+      { path: 'education', component: EducationComponent },
+      { path: 'blog', component: BlogComponent },
+      { path: 'detalhes', component: BlogDetailComponent },
+      { path: 'escrever', component: WritePostComponent },
+      
       {
-      path: 'produto/:id',
-      loadComponent: () => import('./pages/store/product-detail/product-detail.component')
-        .then(m => m.ProductDetailComponent)
-    },
-    {
-      path: 'checkout',
-      loadComponent: () => import('./pages/store/product-checkout/product-checkout.component')
-        .then(m => m.ProductCheckoutComponent)
-    }
+        path: 'produto/:id',
+        loadComponent: () => import('./pages/store/product-detail/product-detail.component')
+          .then(m => m.ProductDetailComponent)
+      },
+      {
+        path: 'checkout',
+        loadComponent: () => import('./pages/store/product-checkout/product-checkout.component')
+          .then(m => m.ProductCheckoutComponent)
+      },
+      
     ]
   },
 

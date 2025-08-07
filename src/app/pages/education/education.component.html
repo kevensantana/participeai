@@ -1,0 +1,61 @@
+<div class="home-page">
+<!-- Hero Section -->
+  <app-hero-section></app-hero-section>
+
+  <!-- Stats Section -->
+  <app-stats-section [stats]="blogStats$ | async"></app-stats-section>
+
+  <!-- Content Tabs -->
+  <app-content-tabs></app-content-tabs>
+
+  <!-- Interactive Calculator -->
+  <app-calculator></app-calculator>
+
+  <!-- Tips Section -->
+  <app-tips-section></app-tips-section>
+
+  <!-- Newsletter -->
+  <app-newsletter-section></app-newsletter-section>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">  
+          <h3 class="footer-title font-title">Educação Sustentável</h3>
+          <p class="footer-description">
+            Transformando conhecimento científico em ação prática para um futuro mais verde e sustentável.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-subtitle">Recursos</h4>
+          <ul class="footer-links">
+            <li><a routerLink="/" class="footer-link">Calculadora de Impacto</a></li>
+            <li><a routerLink="/blog" class="footer-link">Estudos Científicos</a></li>
+            <li><a routerLink="/blog" class="footer-link">Guias Práticos</a></li>
+            <li><a routerLink="/blog" class="footer-link">Dados e Estatísticas</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-subtitle">Temas</h4>
+          <ul class="footer-links">
+            <li><a routerLink="/blog"  [queryParams]="{category: 'food-waste'}" class="footer-link">Desperdício de Alimentos</a></li>
+            <li><a routerLink="/blog" [queryParams]="{category: 'waste-disposal'}" class="footer-link">Gestão de Resíduos</a></li>
+            <li><a routerLink="/blog" [queryParams]="{category: 'water-consumption'}" class="footer-link">Conservação da Água</a></li>
+            <li><a routerLink="/blog" [queryParams]="{category: 'energy-consumption'}" class="footer-link">Eficiência Energética</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4 class="footer-subtitle">Contato</h4>
+          <ul class="footer-links">
+            <li><a href="#" class="footer-link">Sobre o Projeto</a></li>
+            <li><a href="#" class="footer-link">Parcerias</a></li>
+            <li><a href="#" class="footer-link">Suporte</a></li>
+            <li><a href="#" class="footer-link">Política de Privacidade</a></li>
+          </ul>
+        </div>
+      </div>
+  
+    </div>
+  </footer>
+</div>

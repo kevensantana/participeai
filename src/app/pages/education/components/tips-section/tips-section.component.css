@@ -1,0 +1,130 @@
+.tips-section {
+  padding: 4rem 1rem;
+  background-color: rgba(248, 250, 252, 0.3);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--green-dark) 100%);
+
+}
+
+.tips-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.tips-section .section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.tips-section .section-header .section-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary-color);
+}
+
+.tips-section .section-header .section-title {
+  font-size: 2.5rem;
+  color: var(--text-white);
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .tips-section .section-header .section-title {
+    font-size: 3rem;
+  }
+}
+
+.tips-section .section-header .section-subtitle {
+  font-size: 1.125rem;
+  color: var( --text-white);
+}
+
+.tips-section .tips-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .tips-section .tips-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .tips-section .tips-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.tips-section .tip-card {
+  background: white;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.tips-section .tip-card:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tips-section .tip-card.border-l-green-dark {
+  border-left-color: var(--green-dark);
+}
+
+.tips-section .tip-card.border-l-brown-light {
+  border-left-color: var(--brown-light);
+}
+
+.tips-section .tip-card.border-l-btn {
+  border-left-color: var(--btn);
+}
+
+.tips-section .tip-card.border-l-secondary {
+  border-left-color: var(--secondary-color);
+}
+
+.tips-section .tip-card .tip-header {
+  padding: 1.5rem 1.5rem 0;
+}
+
+.tips-section .tip-card .tip-header .tip-category {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-black);
+  margin: 0;
+}
+
+.tips-section .tip-card .tip-content {
+  padding: 1rem 1.5rem 1.5rem;
+}
+
+.tips-section .tip-card .tip-content .tip-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tips-section .tip-card .tip-content .tip-list .tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.tips-section .tip-card .tip-content .tip-list .tip-item:last-child {
+  margin-bottom: 0;
+}
+
+.tips-section .tip-card .tip-content .tip-list .tip-item .tip-icon {
+  color: var(--green-dark);
+  font-weight: bold;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.tips-section .tip-card .tip-content .tip-list .tip-item .tip-text {
+  color: var(--text-gray-light);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}

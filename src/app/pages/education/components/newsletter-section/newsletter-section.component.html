@@ -1,0 +1,44 @@
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-card">
+      <div class="newsletter-content">
+        <div class="newsletter-header">
+          <span class="newsletter-icon">📧</span>
+          <h2 class="newsletter-title font-title">Fique por Dentro</h2>
+        </div>
+        <p class="newsletter-subtitle">
+          Receba dicas exclusivas e as últimas novidades sobre sustentabilidade diretamente no seu e-mail
+        </p>
+        
+        <form (ngSubmit)="onSubmit()" class="newsletter-form" *ngIf="!isSubmitted">
+          <div class="form-group">
+            <input 
+              type="email" 
+              [formControl]="emailControl"
+              placeholder="Seu melhor e-mail"
+              class="email-input"
+              [class.error]="emailControl.invalid && emailControl.touched">
+            <button 
+              type="submit" 
+              class="submit-button"
+              [disabled]="isSubmitting">
+              <span class="button-icon">📤</span>
+              <span *ngIf="!isSubmitting">Inscrever-se</span>
+              <span *ngIf="isSubmitting">Inscrevendo...</span>
+            </button>
+          </div>
+          <div class="error-message" *ngIf="emailControl.invalid && emailControl.touched">
+            Por favor, insira um e-mail válido.
+          </div>
+        </form>
+
+        <div class="success-message" *ngIf="isSubmitted">
+          <span class="success-icon">✅</span>
+          <p>Obrigado! Você foi inscrito com sucesso em nossa newsletter.</p>
+        </div>
+        
+        <p class="newsletter-disclaimer">Não enviamos spam. Cancele a qualquer momento.</p>
+      </div>
+    </div>
+  </div>
+</section>

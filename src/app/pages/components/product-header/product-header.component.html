@@ -1,0 +1,60 @@
+<header class="container site-header">
+  <div class="">
+    <div class="header-flex">
+      <a href="index.html" class="logo">
+        <div class="logo-circle">
+        <i class="fa-solid fa-truck-fast"></i>
+        </div>
+        <span class="logo-text">Alimentos</span>
+      </a>
+      <div class="search-wrapper">
+        <div class="search-container">
+          <svg
+            class="search-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+          <input
+            type="text"
+            placeholder="Buscar produtos..."
+            class="search-input"
+            (input)="onPesquisar($event)"
+          />
+        </div>
+      </div>
+      <nav class="main-nav">
+        <div class="nav-desktop">
+          <a [routerLink]="['/store']" class="nav-link active">
+            <i class="fa-solid fa-house"></i>
+          </a>
+          <a [routerLink]="['/favorite']" class="nav-link">
+            <i class="fa-solid fa-heart"></i>
+          </a>
+          <a  class="nav-link">
+            <i class="fa-solid fa-map"></i>
+          </a>
+          <a class="nav-link">
+            <i class="fa-solid fa-user"></i>
+          </a>
+        </div>
+        <div class="nav-actions">
+          <a class="nav-action">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notification-badge">3</span>
+          </a>
+          <a [routerLink]="['/cart']" class="nav-action">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge">{{ quantidadeCarrinho }}</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>

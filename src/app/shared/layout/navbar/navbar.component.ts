@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,25 +9,37 @@ import { RouterModule } from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  @Output() toggleSidebar = new EventEmitter<void>();
-  @Output() search = new EventEmitter<string>();
+  productDropdownOpen = false;
+  profileMenuOpen = false;
+  mobileMenuOpen = false;
 
-  isMenuOpen = false;
+   constructor(private router: Router) {}
 
-  onToggleSidebar() {
-    this.toggleSidebar.emit();
+  toggleProductDropdown() {
+    this.productDropdownOpen = !this.productDropdownOpen;
   }
 
-  toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
+  toggleProfileMenu() {
+    this.profileMenuOpen = !this.profileMenuOpen;
   }
 
-  closeMenu(): void {
-    this.isMenuOpen = false;
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
-  onSearchInput(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    this.search.emit(input.value.toLowerCase());
+  closeAllMenus() {
+    this.productDropdownOpen = false;
+    this.profileMenuOpen = false;
+    this.mobileMenuOpen = false;
   }
+
+   get isProductSectionActive(): boolean {
+    return this.router.url.startsWith('/store') ||
+           this.router.url.startsWith('/produtos') ||
+           this.router.url.includes('/produtos');
+  }
+
+  get isHelpSectionActive(): boolean {
+  return this.router.url.includes('/ajuda');
+}
 }

@@ -1,0 +1,11 @@
+<section class="stats-section">
+  <div class="container">
+    <h2 class="stats-title font-title text-center">Dados que Impactam</h2>
+    <div class="stats-grid">
+      <div class="stat-card" *ngFor="let stat of defaultStats">
+        <div class="stat-number" [ngClass]="stat.color">{{ stat.number }}</div>
+        <p class="stat-label">{{ stat.label }}</p>
+      </div>
+    </div>
+  </div>
+</section>

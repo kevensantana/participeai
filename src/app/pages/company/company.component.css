@@ -72,17 +72,9 @@ a {
   max-width: 120px;
 }
 
-html,
-body {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-}
 
 .header {
-  background-image: url(/backgrounds/company.png);
+  background-image: url(/backgrounds/company.webp);
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -164,10 +156,10 @@ nav {
 
 .header-container h1 {
   font-size: 4rem;
-  font-weight: 500;
+  font-weight: 900;
   line-height: 4.5rem;
-  color: var(--text-white);
-  font-family: "Sigmar One", sans-serif;
+  color: var(--white);
+  font-family: var(--font-title);
   margin-bottom: 8px;
 }
 
@@ -358,7 +350,7 @@ nav {
 }
 
 .blog {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary);
 }
 
 .blog-grid {
@@ -382,7 +374,7 @@ nav {
 
 .blog-card div span {
   font-size: 0.9rem;
-  color: var(--text-light);
+  color: var(--text-green);
 }
 
 .blog-card div span i {
@@ -398,11 +390,11 @@ nav {
 }
 
 .blog-card p {
-  color: var(--text-light);
+  color: var(--text-green);
 }
 
 .doubt {
-  background-image: url(/backgrounds/doubt.png);
+  background-image: url(/backgrounds/doubt.webp);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

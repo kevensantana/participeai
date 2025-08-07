@@ -1,42 +1,192 @@
 <header class="navbar">
-  <div class="navbar-start">
-    <button class="icon-button" (click)="onToggleSidebar()">
-      <span class="material-icons">menu</span>
-    </button>
-    <img src="logo-dark.png" alt="logo">
-  </div>
+  <div class="navbar-container">
 
-  <div class="navbar-search">
-    <div class="search-wrapper">
-      <span class="material-icons">search</span>
-      <input type="text" id="search-input" placeholder="Pesquise pelos produtos aqui ..." (input)="onSearchInput($event)">
+    <div class="navbar-logo">
+      <img src="logo-dark.png" alt="Logo" />
+    </div>
+
+    <nav class="navbar-nav">
+      <a [routerLink]="['/workspace']" routerLinkActive="active" class="nav-item">
+        <span>Início</span>
+      </a>
+      <a [routerLink]="['/education']" routerLinkActive="active" class="nav-item">
+        <span>Educacional</span>
+      </a>
+
+      <div class="dropdown">
+        <button
+          class="nav-item dropdown-toggle"
+          [ngClass]="{ 'active': isProductSectionActive }"
+          (click)="toggleProductDropdown()"
+        >
+          <span>Produtos</span>
+          <i class="fas fa-chevron-down dropdown-arrow"></i>
+        </button>
+
+        <div class="dropdown-content" *ngIf="productDropdownOpen">
+          <div class="dropdown-grid">
+            <div class="dropdown-card">
+              <a [routerLink]="['/store']">
+                <div class="card-icon"><i class="fas fa-apple-alt"></i></div>
+                <div class="card-content">
+                  <h3>Alimentos</h3>
+                  <p>Gerir Alimentos</p>
+                </div>
+              </a>
+            </div>
+            <div class="dropdown-card">
+              <a [routerLink]="['/map']">
+                <div class="card-icon"><i class="fas fa-recycle"></i></div>
+                <div class="card-content">
+                  <h3>Resíduos</h3>
+                  <p>Gerir Resíduos</p>
+                </div>
+              </a>
+            </div>
+            <div class="dropdown-card">
+              <a>
+                <div class="card-icon"><i class="fas fa-tint"></i></div>
+                <div class="card-content">
+                  <h3>Água</h3>
+                  <p>Gerir Água</p>
+                </div>
+              </a>
+            </div>
+            <div class="dropdown-card">
+              <a>
+                <div class="card-icon"><i class="fas fa-bolt"></i></div>
+                <div class="card-content">
+                  <h3>Energia</h3>
+                  <p>Gerir Energia</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="navbar-actions">
+      <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
+        <i class="fas fa-bars"></i>
+      </button>
+      <button class="action-btn search-btn">
+        <i class="fas fa-search"></i>
+      </button>
+      <button [routerLink]="['/faq']" routerLinkActive="active" [ngClass]="{ 'active': isHelpSectionActive }" class="action-btn settings-btn">
+        <i class="fas fa-circle-question"></i>
+      </button>
+      <div class="notification-wrapper">
+        <button class="action-btn notification-btn">
+          <i class="fas fa-bell"></i>
+          <span class="notification-badge">3</span>
+        </button>
+      </div>
+
+      <div class="profile-wrapper" [class.active]="profileMenuOpen">
+        <button class="profile-btn" (click)="toggleProfileMenu()">
+          <img src="/time/keven.jpeg" alt="Keven Santana" />
+        </button>
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="profile-header">
+            <img src="/time/keven.jpeg" alt="Keven Santana" />
+            <h3>Keven Santana</h3>
+          </div>
+          <hr />
+          <div class="profile-menu">
+            <a href="/perfil" class="profile-menu-item">
+              <div class="profile-menu-icon">
+                <i class="fas fa-user"></i>
+              </div>
+              <span>Editar perfil</span>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+            <a href="/login" class="profile-menu-item logout">
+              <div class="profile-menu-icon">
+                <i class="fas fa-sign-out-alt"></i>
+              </div>
+              <span>Sair</span>
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="navbar-end">
-    <a class="nav-action">
-      <i class="fa-solid fa-bell" [routerLink]="['/notifications']"></i>
-      <span class="notification-badge">3</span>
-    </a>
-    <img class="user-pic" src="/time/keven.jpeg" alt="" (click)="toggleMenu()">
-    <div class="sub-menu-wrap" [ngClass]="{ 'open-menu': isMenuOpen }" id="subMenu">
-      <div class="sub-menu">
-        <div class="user-info">
-          <img src="/time/keven.jpeg" alt="">
-          <h3>Keven santana</h3>
+  <div class="mobile-menu" [class.active]="mobileMenuOpen" id="mobileMenu">
+    <div class="mobile-menu-content">
+      <a [routerLink]="['/workspace']" class="mobile-menu-item">
+        <i class="fas fa-home"></i>
+        <span>Início</span>
+      </a>
+
+      <div class="mobile-menu-section">
+        <div class="mobile-menu-header">
+          <i class="fas fa-box"></i>
+          <span>Produtos</span>
         </div>
-        <hr>
-        <a [routerLink]="['/perfil']" class="sub-menu-link" (click)="closeMenu()">
-          <img src="/navbar/profile.png" alt="">
-          <p>Editar perfil</p>
-          <span>></span>
-        </a>
-        <a [routerLink]="['/login']" class="sub-menu-link" (click)="closeMenu()">
-          <img src="/navbar/logout.png" alt="">
-          <p>Sair</p>
-          <span>></span>
-        </a>
+        <div class="mobile-submenu">
+          <a [routerLink]="['/store']" class="mobile-submenu-item">
+            <i class="fas fa-apple-alt"></i>
+            <span>Alimentos</span>
+          </a>
+          <a  class="mobile-submenu-item">
+            <i class="fas fa-recycle"></i>
+            <span>Resíduos</span>
+          </a>
+          <a class="mobile-submenu-item">
+            <i class="fas fa-tint"></i>
+            <span>Água</span>
+          </a>
+          <a class="mobile-submenu-item">
+            <i class="fas fa-bolt"></i>
+            <span>Energia</span>
+          </a>
+        </div>
+
+        <hr class="diviser" />
+
+        <div class="mobile-menu-section">
+          <a class="mobile-menu-item">
+            <i class="fas fa-search"></i>
+            <span>Buscar</span>
+          </a>
+          <a [routerLink]="['/faq']" class="mobile-menu-item">
+            <i class="fas fa-circle-question"></i>
+            <span>Ajuda</span>
+          </a>
+          <a class="mobile-menu-item">
+            <i class="fas fa-bell"></i>
+            <span>Notificações <span class="notification-badge">3</span></span>
+          </a>
+        </div>
+
+        <hr />
+
+        <div class="mobile-menu-section">
+          <div class="mobile-menu-header">
+            <i class="fas fa-user"></i>
+            <span>Conta</span>
+          </div>
+          <div class="mobile-submenu">
+            <a href="/perfil" class="mobile-submenu-item">
+              <i class="fas fa-user"></i>
+              <span>Editar perfil</span>
+            </a>
+            <a href="/login" class="mobile-submenu-item logout">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Sair</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </header>
+
+<div
+  class="overlay"
+  [class.active]="productDropdownOpen || profileMenuOpen || mobileMenuOpen"
+  (click)="closeAllMenus()"
+></div>

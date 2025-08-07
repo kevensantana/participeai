@@ -1,0 +1,176 @@
+<div class="blog-detail-page" *ngIf="post$ | async as post; else notFound">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-section">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a routerLink="/" class="breadcrumb-link">Início</a>
+        <span class="breadcrumb-separator">›</span>
+        <a routerLink="/blog" class="breadcrumb-link">Blog</a>
+        <span class="breadcrumb-separator">›</span>
+        <a [routerLink]="['/blog']" [queryParams]="{category: post.category.slug}" class="breadcrumb-link">
+          {{ post.category.name }}
+        </a>
+        <span class="breadcrumb-separator">›</span>
+        <span class="breadcrumb-current">{{ post.title }}</span>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Back Button -->
+    <button (click)="goBack()" class="back-button">
+      <span class="back-icon">←</span>
+      Voltar ao Blog
+    </button>
+
+    <!-- Article -->
+    <article class="article">
+      <header class="article-header">
+        <div class="article-category">
+          <span class="category-badge" [style.background-color]="post.category.color">
+            {{ post.category.name }}
+          </span>
+        </div>
+        
+        <h1 class="article-title font-title">{{ post.title }}</h1>
+        <p class="article-excerpt">{{ post.excerpt }}</p>
+
+        <!-- Article Meta -->
+        <div class="article-meta">
+          <div class="meta-left">
+            <div class="author-info">
+              <div class="author-avatar">
+                <!-- {{ post.author.split(' ').map(n => n[0]).join('') }} -->
+              </div>
+              <span class="author-name">{{ post.author }}</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-icon">📅</span>
+              <span>{{ post.date }}</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-icon">🕐</span>
+              <span>{{ post.readTime }} de leitura</span>
+            </div>
+          </div>
+          
+          <div class="meta-right">
+            <div class="engagement-stats">
+              <div class="stat">
+                <span class="stat-icon">👁️</span>
+                <span>{{ post.views }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-icon">❤️</span>
+                <span>{{ post.likes }}</span>
+              </div>
+              <div class="stat">
+                <span class="stat-icon">💬</span>
+                <span>{{ post.comments }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="article-tags">
+          <span class="tag" *ngFor="let tag of post.tags">{{ tag }}</span>
+        </div>
+
+        <!-- Featured Image -->
+        <div class="article-image">
+          <img [src]="post.image" [alt]="post.title">
+        </div>
+      </header>
+
+      <!-- Article Content -->
+      <div class="article-content">
+        <div class="prose" [innerHTML]="formatContent(post.content || '')"></div>
+      </div>
+    </article>
+
+    <!-- Article Actions -->
+    <div class="article-actions">
+      <div class="action-buttons">
+        <button (click)="likePost()" class="action-btn">
+          <span class="btn-icon">👍</span>
+          Curtir ({{ post.likes }})
+        </button>
+        <button (click)="sharePost()" class="action-btn">
+          <span class="btn-icon">📤</span>
+          Compartilhar
+        </button>
+        <button (click)="reportPost()" class="action-btn">
+          <span class="btn-icon">🚩</span>
+          Reportar
+        </button>
+      </div>
+      <div class="action-message">
+        Gostou deste artigo? Compartilhe com seus amigos!
+      </div>
+    </div>
+
+    <!-- Author Bio -->
+    <div class="author-bio">
+      <div class="author-avatar-large">
+        <!-- {{ post.author.split(' ').map(n => n[0]).join('') }} -->
+      </div>
+      <div class="author-info">
+        <h3>Sobre o Autor</h3>
+        <h4>{{ post.author }}</h4>
+        <p>Especialista em sustentabilidade com vasta experiência em pesquisa e desenvolvimento de soluções ambientais.</p>
+      </div>
+    </div>
+
+    <!-- Comments Section -->
+    <div class="comments-section">
+      <h3 class="comments-title">
+        <span class="comments-icon">💬</span>
+        Comentários ({{ post.comments }})
+      </h3>
+      <div class="comments-placeholder">
+        <span class="placeholder-icon">💬</span>
+        <p>Sistema de comentários em desenvolvimento.</p>
+        <p class="placeholder-subtitle">Em breve você poderá interagir com outros leitores!</p>
+      </div>
+    </div>
+
+    <!-- Related Articles -->
+    <section class="related-articles" *ngIf="relatedPosts$ | async as relatedPosts">
+      <h3 class="related-title">
+        <span class="related-icon">📖</span>
+        Artigos Relacionados
+      </h3>
+      <div class="related-grid">
+        <article 
+          class="related-card" 
+          *ngFor="let related of relatedPosts.slice(0, 2)">
+          <div class="related-image">
+            <img [src]="related.image" [alt]="related.title">
+            <span class="related-category" [style.background-color]="related.category.color">
+              {{ related.category.name }}
+            </span>
+          </div>
+          <div class="related-content">
+            <h4 class="related-card-title">{{ related.title }}</h4>
+            <p class="related-excerpt">{{ related.excerpt }}</p>
+            <div class="related-meta">
+              <span>{{ related.author }}</span>
+              <span>{{ related.readTime }}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <div class="container">
+      <h1>Artigo não encontrado</h1>
+      <p>O artigo que você está procurando não existe ou foi removido.</p>
+      <button (click)="goBack()" class="btn btn-primary">Voltar ao Blog</button>
+    </div>
+  </div>
+</ng-template>

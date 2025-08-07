@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { UserRegister } from '../models/user.model';
 
 
 @Injectable({
@@ -31,5 +32,11 @@ export class UserService {
   getById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
+
+  getByEmail(email: string): Observable<UserRegister[]> {
+   return this.http.get<UserRegister[]>(`${this.apiUrl}?email=${email}`);
+  }
+
+
   
 }

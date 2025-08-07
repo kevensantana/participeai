@@ -1,0 +1,28 @@
+<section class="tips-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-icon">💡</div>
+      <h2 class="section-title font-title">Dicas Práticas</h2>
+      <p class="section-subtitle">Ações simples que você pode implementar hoje mesmo</p>
+    </div>
+
+    <div class="tips-grid">
+      <div 
+        class="tip-card" 
+        *ngFor="let category of tipCategories"
+        [ngClass]="category.color">
+        <div class="tip-header">
+          <h3 class="tip-category">{{ category.category }}</h3>
+        </div>
+        <div class="tip-content">
+          <ul class="tip-list">
+            <li *ngFor="let tip of category.tips" class="tip-item">
+              <span class="tip-icon">✓</span>
+              <span class="tip-text">{{ tip }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

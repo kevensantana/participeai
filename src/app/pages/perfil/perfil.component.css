@@ -7,7 +7,7 @@
 
 .sidebar {
   width: 250px;
-  background-color: white;
+  background-color: var(--white);
   border-radius: 20px;
   padding: 2rem 1rem;
   text-align: center;
@@ -45,7 +45,7 @@
   padding-bottom: 10px;
   transition: 0.3s;
   text-decoration: none;
-  color: black;
+  color: var(--text-black);
 }
 
 .menu a::after {
@@ -84,7 +84,7 @@
 
 .main-content {
   flex: 1;
-  background-color: white;
+  background-color: var(--white);
   border-radius: 20px;
   padding: 2rem;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -132,7 +132,7 @@
   width: 12px;
   height: 12px;
   cursor: pointer;
-  accent-color: #ff4d4d;
+  accent-color: var(--confirm-checkbox);
   transform: scale(1.5);
   margin-right: 10px;
 }
@@ -145,9 +145,8 @@
 }
 
 .btn {
-  font-family: inherit;
   font-size: 18px;
-  color: white;
+  color: var(--white);
   fill: rgb(155, 153, 153);
   padding: 0.7em 1em;
   padding-left: 0.9em;

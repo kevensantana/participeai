@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
   styles: [`
     .callback-container {
       height: 100vh;
-      background-color: var(--main-color);
+      background-color: var(--primary);
       color: var(--text-white);
       display: flex;
       flex-direction: column;

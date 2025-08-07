@@ -1,0 +1,142 @@
+<section class="content-tabs-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title font-title">Explore Nossos Temas</h2>
+      <p class="section-subtitle">
+        Conteúdo especializado para te ajudar a fazer a diferença no mundo
+      </p>
+    </div>
+
+    <div class="tabs-container">
+      <div class="tabs-nav">
+        <button 
+          *ngFor="let tab of tabs"
+          class="tab-button"
+          [class.active]="activeTab === tab.id"
+          [style.border-color]="activeTab === tab.id ? tab.color : 'transparent'"
+          (click)="setActiveTab(tab.id)">
+          <span class="tab-icon">{{ tab.icon }}</span>
+          <span class="tab-title">{{ tab.title }}</span>
+        </button>
+      </div>
+
+      <div class="tabs-content">
+        <!-- Food Waste Tab -->
+        <div class="tab-pane" [class.active]="activeTab === 'food-waste'">
+          <div class="content-card">
+            <h3>O Desperdício de Alimentos: Um Desafio Global</h3>
+            <p class="content-date">Publicado em 5 de agosto de 2025</p>
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&h=400&fit=crop" 
+                 alt="Alimentos desperdiçados" class="content-image">
+            <div class="content-text">
+              <p>
+                O desperdício de alimentos é um problema sério que afeta a todos, desde a produção até o consumo final.
+                Estima-se que uma quantidade significativa de alimentos produzidos globalmente é perdida ou desperdiçada a
+                cada ano. Isso não apenas representa uma perda econômica, mas também tem um impacto ambiental considerável,
+                contribuindo para as emissões de gases de efeito estufa e o uso ineficiente de recursos naturais.
+              </p>
+              <h4>Como Reduzir o Desperdício em Casa</h4>
+              <ul>
+                <li>Planeje suas refeições e faça uma lista de compras.</li>
+                <li>Armazene os alimentos corretamente para prolongar sua vida útil.</li>
+                <li>Use sobras de forma criativa em novas receitas.</li>
+                <li>Compre apenas o que você precisa e consuma antes que estrague.</li>
+              </ul>
+              <p>
+                Pequenas mudanças em nossos hábitos diários podem fazer uma grande diferença na redução do desperdício de
+                alimentos e na promoção de um futuro mais sustentável.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waste Disposal Tab -->
+        <div class="tab-pane" [class.active]="activeTab === 'waste-disposal'">
+          <div class="content-card">
+            <h3>O Impacto do Descarte Incorreto de Resíduos</h3>
+            <p class="content-date">Publicado em 5 de agosto de 2025</p>
+            <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800&h=400&fit=crop" 
+                 alt="Lixo descartado incorretamente" class="content-image">
+            <div class="content-text">
+              <p>
+                O descarte incorreto de resíduos é uma das maiores ameaças ao meio ambiente e à saúde pública. Quando o lixo
+                não é separado e descartado adequadamente, ele pode contaminar o solo, a água e o ar, além de prejudicar a
+                vida selvagem. A falta de reciclagem e compostagem agrava ainda mais o problema, sobrecarregando aterros
+                sanitários e esgotando recursos naturais.
+              </p>
+              <h4>Práticas de Descarte Consciente</h4>
+              <ul>
+                <li>Separe o lixo orgânico do reciclável.</li>
+                <li>Conheça os pontos de coleta seletiva em sua comunidade.</li>
+                <li>Evite o uso de produtos descartáveis sempre que possível.</li>
+                <li>Reutilize e repare itens antes de descartá-los.</li>
+              </ul>
+              <p>
+                Adotar práticas de descarte consciente é fundamental para proteger nosso planeta e garantir um ambiente
+                saudável para as futuras gerações.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Water Consumption Tab -->
+        <div class="tab-pane" [class.active]="activeTab === 'water-consumption'">
+          <div class="content-card">
+            <h3>Consumo Consciente de Água: Um Recurso Precioso</h3>
+            <p class="content-date">Publicado em 5 de agosto de 2025</p>
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=400&fit=crop" 
+                 alt="Torneira pingando" class="content-image">
+            <div class="content-text">
+              <p>
+                A água é um recurso finito e essencial para a vida. No entanto, o consumo excessivo e o desperdício são
+                preocupações crescentes em muitas regiões do mundo. A escassez de água pode levar a crises hídricas,
+                afetando a agricultura, a indústria e o abastecimento doméstico. É crucial adotar hábitos que promovam o uso
+                eficiente da água.
+              </p>
+              <h4>Dicas para Economizar Água</h4>
+              <ul>
+                <li>Tome banhos mais curtos.</li>
+                <li>Feche a torneira ao escovar os dentes ou ensaboar a louça.</li>
+                <li>Reaproveite a água da chuva ou da máquina de lavar para regar plantas.</li>
+                <li>Verifique e conserte vazamentos em torneiras e vasos sanitários.</li>
+              </ul>
+              <p>
+                Cada gota conta. Ao economizar água, contribuímos para a sustentabilidade do planeta e garantimos que esse
+                recurso vital esteja disponível para todos.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Energy Consumption Tab -->
+        <div class="tab-pane" [class.active]="activeTab === 'energy-consumption'">
+          <div class="content-card">
+            <h3>Eficiência Energética: Iluminando o Futuro</h3>
+            <p class="content-date">Publicado em 5 de agosto de 2025</p>
+            <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&h=400&fit=crop" 
+                 alt="Lâmpada economizadora de energia" class="content-image">
+            <div class="content-text">
+              <p>
+                O consumo de energia é um dos principais fatores que contribuem para as mudanças climáticas e a degradação
+                ambiental. A maior parte da energia que utilizamos ainda provém de fontes não renováveis, que geram poluição
+                e esgotam recursos naturais. A transição para fontes de energia limpa e a adoção de práticas de eficiência
+                energética são essenciais para um futuro sustentável.
+              </p>
+              <h4>Maneiras de Reduzir o Consumo de Energia</h4>
+              <ul>
+                <li>Desligue as luzes e aparelhos eletrônicos quando não estiverem em uso.</li>
+                <li>Use lâmpadas LED, que são mais eficientes.</li>
+                <li>Aproveite a luz natural sempre que possível.</li>
+                <li>Invista em eletrodomésticos com selo Procel A.</li>
+              </ul>
+              <p>
+                Pequenas ações no dia a dia podem resultar em grandes economias de energia e um impacto positivo no meio
+                ambiente.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

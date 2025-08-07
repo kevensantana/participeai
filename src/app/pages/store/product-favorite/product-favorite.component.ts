@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { ProductHeaderComponent } from '../product-header/product-header.component';
+import { ProductHeaderComponent } from '../../components/product-header/product-header.component';
+
 
 @Component({
   selector: 'app-product-favorite',

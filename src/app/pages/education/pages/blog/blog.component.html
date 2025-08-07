@@ -1,0 +1,213 @@
+<div class="blog-page">
+  <!-- Blog Header -->
+  <section class="blog-header">
+     <div class="home-voltar">
+      <a routerLink="/education">Voltar</a>
+    </div>
+    <div class="container">
+      <div class="blog-header-content">
+        <div class="blog-header-title">
+          <!-- <span class="blog-icon">📖</span> -->
+          <h1 class="font-title">Blog Sustentável</h1>
+        </div>
+        <p class="blog-header-subtitle">
+          Explore nosso acervo completo de artigos sobre sustentabilidade, meio ambiente e práticas conscientes
+        </p>
+        
+        <div class="blog-header-actions">
+          <!-- Search Bar -->
+          <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input 
+              [formControl]="searchControl"
+              placeholder="Buscar artigos..." 
+              class="search-input"
+            >
+          </div>
+          
+          <!-- Write Button -->
+          <button (click)="navigateToWrite()" class="btn btn-primary">
+            <span>✏️</span>
+            Escrever Artigo
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container blog-content">
+    <!-- Stats -->
+    <div class="blog-stats" *ngIf="stats$ | async as stats">
+      <div class="stat-card">
+        <div class="stat-number primary">{{ stats.totalPosts }}</div>
+        <div class="stat-label">Artigos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number green">{{ stats.totalCategories }}</div>
+        <div class="stat-label">Categorias</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number blue">{{ stats.totalViews.toLocaleString() }}</div>
+        <div class="stat-label">Visualizações</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number yellow">{{ stats.totalComments }}</div>
+        <div class="stat-label">Comentários</div>
+      </div>
+    </div>
+
+    <!-- Featured Posts -->
+    <section class="featured-section" *ngIf="featuredPosts$ | async as featuredPosts">
+      <h2 class="section-title">
+        <span class="section-icon">📈</span>
+        Artigos em Destaque
+      </h2>
+      <div class="featured-grid">
+        <article 
+          class="post-card featured" 
+          *ngFor="let post of featuredPosts"
+          (click)="navigateToPost(post.slug)">
+          <div class="post-image">
+            <img [src]="post.image" [alt]="post.title">
+            <div class="post-badges">
+              <span class="badge badge-danger">Destaque</span>
+              <span class="badge badge-success">{{ post.category.name }}</span>
+            </div>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">{{ post.title }}</h3>
+            <p class="post-excerpt">{{ post.excerpt }}</p>
+            
+            <div class="post-tags">
+              <span class="tag" *ngFor="let tag of post.tags.slice(0, 2)">{{ tag }}</span>
+            </div>
+            
+            <div class="post-meta">
+              <div class="post-author">
+                <span class="author-icon">👤</span>
+                <span>{{ post.author }}</span>
+              </div>
+              <div class="post-read-time">
+                <span class="time-icon">🕐</span>
+                <span>{{ post.readTime }}</span>
+              </div>
+            </div>
+            
+            <div class="post-stats">
+              <div class="post-engagement">
+                <div class="stat">
+                  <span class="stat-icon">👁️</span>
+                  <span>{{ post.views }}</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-icon">❤️</span>
+                  <span>{{ post.likes }}</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-icon">💬</span>
+                  <span>{{ post.comments }}</span>
+                </div>
+              </div>
+              <span class="post-date">{{ post.date }}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="blog-tabs">
+      <div class="tabs-header">
+        <div class="tabs-nav">
+          <button 
+            class="tab-button" 
+            [class.active]="(activeFilter | async) === 'all'"
+            (click)="setFilter('all')">Todos</button>
+          <button 
+            class="tab-button" 
+            [class.active]="(activeFilter | async) === 'recent'"
+            (click)="setFilter('recent')">Recentes</button>
+          <button 
+            class="tab-button" 
+            [class.active]="(activeFilter | async) === 'popular'"
+            (click)="setFilter('popular')">Populares</button>
+          <button 
+            class="tab-button" 
+            [class.active]="(activeFilter | async) === 'food-waste'"
+            (click)="setFilter('food-waste')">Alimentos</button>
+          <button 
+            class="tab-button" 
+            [class.active]="(activeFilter | async) === 'waste-disposal'"
+            (click)="setFilter('waste-disposal')">Resíduos</button>
+          <button 
+            class="tab-button" 
+            [class.active]="(activeFilter | async) === 'water-consumption'"
+            (click)="setFilter('water-consumption')">Água</button>
+          <button 
+            class="tab-button" 
+            [class.active]="(activeFilter | async) === 'energy-consumption'"
+            (click)="setFilter('energy-consumption')">Energia</button>
+        </div>
+      </div>
+
+      <div class="posts-grid">
+        <article 
+          class="post-card" 
+          *ngFor="let post of filteredPosts$ | async"
+          (click)="navigateToPost(post.slug)">
+          <div class="post-image">
+            <img [src]="post.image" [alt]="post.title">
+            <div class="post-badges">
+              <span class="badge" [style.background-color]="post.category.color" style="color: white;">
+                {{ post.category.name }}
+              </span>
+            </div>
+          </div>
+          <div class="post-content">
+            <h3 class="post-title">{{ post.title }}</h3>
+            <p class="post-excerpt">{{ post.excerpt }}</p>
+            
+            <div class="post-tags">
+              <span class="tag" *ngFor="let tag of post.tags.slice(0, 2)">{{ tag }}</span>
+            </div>
+            
+            <div class="post-meta">
+              <div class="post-author">
+                <span class="author-icon">👤</span>
+                <span>{{ post.author }}</span>
+              </div>
+              <div class="post-read-time">
+                <span class="time-icon">🕐</span>
+                <span>{{ post.readTime }}</span>
+              </div>
+            </div>
+            
+            <div class="post-stats">
+              <div class="post-engagement">
+                <div class="stat">
+                  <span class="stat-icon">👁️</span>
+                  <span>{{ post.views }}</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-icon">❤️</span>
+                  <span>{{ post.likes }}</span>
+                </div>
+                <div class="stat">
+                  <span class="stat-icon">💬</span>
+                  <span>{{ post.comments }}</span>
+                </div>
+              </div>
+              <span class="post-date">{{ post.date }}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      
+      <div class="no-posts" *ngIf="(filteredPosts$ | async)?.length === 0">
+        <span class="no-posts-icon">🔍</span>
+        <h3>Nenhum artigo encontrado</h3>
+        <p>Tente ajustar os filtros ou buscar por outros termos.</p>
+      </div>
+    </div>
+  </div>
+</div>

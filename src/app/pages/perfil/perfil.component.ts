@@ -13,7 +13,8 @@ import { UserService } from '../../auth/services/user.service';
 })
 export class PerfilComponent implements OnInit {
   usuario: any;
-
+  mame: string = '';
+  email: string = '';
   senhaAtual: string = '';
   novaSenha: string = '';
   confirmarSenha: string = '';

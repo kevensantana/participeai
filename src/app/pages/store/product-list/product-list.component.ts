@@ -4,13 +4,13 @@ import { CartService } from '../services/cart.service';
 import { Product } from '../models/product.model';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ProductHeaderComponent } from '../product-header/product-header.component';
+import { ProductHeaderComponent } from '../../components/product-header/product-header.component';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, ProductHeaderComponent, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })

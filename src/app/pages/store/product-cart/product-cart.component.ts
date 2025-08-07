@@ -4,8 +4,9 @@ import { CartService } from '../services/cart.service';
 import { Product } from '../models/product.model';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ProductHeaderComponent } from '../product-header/product-header.component';
 import { ProductCheckoutComponent } from '../product-checkout/product-checkout.component';
+import { ProductHeaderComponent } from '../../components/product-header/product-header.component';
+
 
 @Component({
   selector: 'app-product-cart',

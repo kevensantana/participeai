@@ -1,0 +1,48 @@
+
+<div class="container">
+  <aside class="sidebar">
+    <h2>🔍 Buscar</h2>
+    <input type="text" placeholder="Nome ou endereço...">
+
+    <h2>Tipos de Resíduo</h2>
+    <div class="filtro">
+      <label *ngFor="let tipo of tipos">
+        <input type="checkbox" [(ngModel)]="tipo.checked" (change)="onFiltroChange()">
+        <span class="legend-dot {{ tipo.cor }}"></span> {{ tipo.nome }}
+      </label>
+    </div>
+
+
+    <div class="resultados">
+      <strong>Pontos Encontrados ({{ pontosFiltrados.length }})</strong>
+      <ul>
+        <li *ngFor="let ponto of pontosFiltrados">
+          {{ ponto.nome }} — {{ ponto.distancia }} km
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <div class="map-container">
+    <div id="map" class="map"></div>
+
+    <div class="map-legend">
+      <span><span class="legend-dot green"></span> Coleta Seletiva</span>
+      <span><span class="legend-dot blue"></span> Eletrônicos</span>
+      <span><span class="legend-dot orange"></span> Óleo de Cozinha</span>
+      <span><span class="legend-dot red"></span> Pilhas e Baterias</span>
+      <span><span class="legend-dot purple"></span> Medicamentos</span>
+      <span><span class="legend-dot brown"></span> Orgânicos</span>
+    </div>
+
+    <div class="zoom-control">
+      <button (click)="zoomIn()">+</button>
+      <button (click)="zoomOut()">−</button>
+    </div>
+  </div>
+</div>
+
+  <div class="map-container">
+
+ 
+  </div>

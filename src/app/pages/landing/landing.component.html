@@ -2,7 +2,7 @@
   <nav>
     <div class="nav-bar">
       <div class="logo">
-        <a href="#"><img src="logo.png" alt="logo" /></a>
+        <a href="#"><img src="logo.svg" alt="logo" /></a>
       </div>
       <div class="nav-menu-btn" id="menu-btn" (click)="toggleMenu()">
         <i class="fa-solid fa-bars"></i>
@@ -20,8 +20,10 @@
   </nav>
   <div class="section-container header-container" id="home">
     <h1>Participe.ai</h1>
-    <p>ECONOMIA E SUSTENTABILIDADE NA PALMA DA  MÃO</p>
-    <button class="btn-header nav-btn" [routerLink]="['/register']">Criar a conta</button>
+    <p>ECONOMIA E SUSTENTABILIDADE NA PALMA DA MÃO</p>
+    <button class="btn-header nav-btn" [routerLink]="['/register']">
+      Criar a conta
+    </button>
   </div>
 </header>
 
@@ -31,21 +33,30 @@
       <span><i class="fa-solid fa-hand-holding-dollar"></i></span>
       <div>
         <h3>Monitore. Economize. Mude.</h3>
-        <p>Acompanhe seu consumo de água e energia, reduza desperdícios e faça parte da mudança.</p>
+        <p>
+          Acompanhe seu consumo de água e energia, reduza desperdícios e faça
+          parte da mudança.
+        </p>
       </div>
     </div>
     <div class="input-group">
       <span><i class="fa-solid fa-leaf"></i></span>
       <div>
         <h3>Separe. Descarte. Impacte.</h3>
-        <p>Descarte corretamente e encontre pontos de coleta com facilidade. Pequenas ações, grandes mudanças.</p>
+        <p>
+          Descarte corretamente e encontre pontos de coleta com facilidade.
+          Pequenas ações, grandes mudanças.
+        </p>
       </div>
     </div>
     <div class="input-group">
       <span><i class="fa-solid fa-gamepad"></i></span>
       <div>
-        <h3> Aprenda. Aja. Conquiste.</h3>
-        <p>Aprenda e aja com consciência. Ganhe recompensas que beneficiam você e o planeta.</p>
+        <h3>Aprenda. Aja. Conquiste.</h3>
+        <p>
+          Aprenda e aja com consciência. Ganhe recompensas que beneficiam você e
+          o planeta.
+        </p>
       </div>
     </div>
   </form>
@@ -53,13 +64,25 @@
 
 <section class="section-container about-container" id="about">
   <div class="about-image">
-    <img src="/time/time.jpeg" alt="about" />
+    <img src="/time/time.jpeg" alt="about" loading="lazy" />
   </div>
   <div class="about-content">
     <p class="section-subheader">SOBRE NÓS</p>
-    <h2 class="section-header">Conectados pela inovação, unidos pela sustentabilidade.</h2>
-    <p class="section-description">A Participe.ai nasceu no HUB Salvador, um ambiente voltado para inovação e colaboração. Foi lá que nosso grupo se conheceu e, impulsionado por um desafio de residência tecnológica, criou a plataforma com o propósito de transformar a relação entre pessoas, empresas e sustentabilidade.</p>
-    <p class="section-description">Centralizamos soluções sustentáveis em um único lugar, alinhando nossa atuação aos princípios ESG. Com uma abordagem multifuncional e aberta a novas ideias, tornamos mais simples o acesso a práticas conscientes, promovendo eficiência, economia e impacto positivo no meio ambiente.</p>
+    <h2 class="section-header">
+      Conectados pela inovação, unidos pela sustentabilidade.
+    </h2>
+    <p class="section-description">
+      A Participe.ai nasceu no HUB Salvador, um ambiente voltado para inovação e
+      colaboração. Foi lá que nosso grupo se conheceu e, impulsionado por um
+      desafio de residência tecnológica, criou a plataforma com o propósito de
+      transformar a relação entre pessoas, empresas e sustentabilidade.
+    </p>
+    <p class="section-description">
+      Centralizamos soluções sustentáveis em um único lugar, alinhando nossa
+      atuação aos princípios ESG. Com uma abordagem multifuncional e aberta a
+      novas ideias, tornamos mais simples o acesso a práticas conscientes,
+      promovendo eficiência, economia e impacto positivo no meio ambiente.
+    </p>
   </div>
 </section>
 
@@ -69,50 +92,62 @@
   <div class="service-grid">
     <div class="service-card">
       <div class="service-card-image">
-        <img src="water-service.png" alt="service" />
+        <img src="/products/water-service.webp" alt="service" loading="lazy" />
       </div>
       <div class="service-card-details">
         <h4>Água Inteligente</h4>
         <p>
-          Monitore seu consumo de água, receba dicas personalizadas e economize com escolhas mais conscientes e sustentáveis!
+          Monitore seu consumo de água, receba dicas personalizadas e economize
+          com escolhas mais conscientes e sustentáveis!
         </p>
-        <button class="btn service-btn" (click)="openDialog('water')">Veja mais</button>
+        <button class="btn service-btn" (click)="openDialog('water')">
+          Veja mais
+        </button>
       </div>
     </div>
     <div class="service-card">
       <div class="service-card-image">
-        <img src="energy-service.png" alt="service" />
+        <img src="/products/energy-service.webp" alt="service" loading="lazy" />
       </div>
       <div class="service-card-details">
         <h4>Energia Eficiente</h4>
         <p>
-          Monitore seu consumo de energia, receba dicas personalizadas e economize com escolhas mais conscientes e sustentáveis!
+          Monitore seu consumo de energia, receba dicas personalizadas e
+          economize com escolhas mais conscientes e sustentáveis!
         </p>
-        <button class="btn service-btn" (click)="openDialog('energy')">Veja mais</button>
+        <button class="btn service-btn" (click)="openDialog('energy')">
+          Veja mais
+        </button>
       </div>
     </div>
     <div class="service-card">
       <div class="service-card-image">
-        <img src="food-service.png" alt="service" />
+        <img src="/products/food-service.webp" alt="service" loading="lazy" />
       </div>
       <div class="service-card-details">
         <h4>Alimentos Sustentáveis</h4>
         <p>
-          Uma feira virtual inteligente que conecta distribuidores a grandes consumidores, reduzindo o descarte de alimentos perecíveis.
+          Uma feira virtual inteligente que conecta distribuidores a grandes
+          consumidores, reduzindo o descarte de alimentos perecíveis.
         </p>
-        <button class="btn service-btn" (click)="openDialog('food')">Veja mais</button>
+        <button class="btn service-btn" (click)="openDialog('food')">
+          Veja mais
+        </button>
       </div>
     </div>
     <div class="service-card">
       <div class="service-card-image">
-        <img src="trash-service.png" alt="service" />
+        <img src="/products/trash-service.webp" alt="service" loading="lazy" />
       </div>
       <div class="service-card-details">
         <h4>Descarte Consciente</h4>
         <p>
-          Aprenda e pratique o descarte correto de resíduos! Localize pontos de descarte e aprenda mais sobre o impacto ambiental.
+          Aprenda e pratique o descarte correto de resíduos! Localize pontos de
+          descarte e aprenda mais sobre o impacto ambiental.
         </p>
-        <button class="btn service-btn" (click)="openDialog('residue')">Veja mais</button>
+        <button class="btn service-btn" (click)="openDialog('residue')">
+          Veja mais
+        </button>
       </div>
     </div>
   </div>
@@ -124,110 +159,135 @@
       <p class="section-subheader">TIME</p>
       <h2 class="section-header">Conheça nossa equipe.</h2>
       <div class="team-slider flex mt-15 gap-1">
-            <div class="team-img">
-              <img src="/time/keven.jpeg" alt="Keven Santana">
-              <div class="overlay">
-                <div class="overlay-text">
-                  <h3>Keven Santana</h3>
-                  <h4>Contribuição: Scrum Master / Frontend</h4>
-                  <div class="flex flex-center gap-1">
-                    <a href="https://www.linkedin.com/in/kevensantanadev/"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/kevensantana"><i class="fa-brands fa-github"></i></a>
-                  </div>
-                </div>
+        <div class="team-img">
+          <img src="/time/keven.jpeg" alt="Keven Santana" loading="lazy"/>
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Keven Santana</h3>
+              <h4>Contribuição: Scrum Master / Frontend</h4>
+              <div class="flex flex-center gap-1">
+                <a href="https://www.linkedin.com/in/kevensantanadev/"
+                  ><i class="fa-brands fa-linkedin"></i
+                ></a>
+                <a href="https://github.com/kevensantana"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
               </div>
             </div>
-            <div class="team-img">
-              <img src="/time/veronica.jpeg" alt="Veronica Vilas">
-              <div class="overlay">
-                <div class="overlay-text">
-                  <h3>Verônica Vilas</h3>
-                  <h4>Contribuição: Tech Leader  /  Design UI e UX /  Frontend</h4>
-                  <div class="flex flex-center gap-1">
-                    <a href="https://www.linkedin.com/in/veronica-vilas/"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/VeronicaVilas"><i class="fa-brands fa-github"></i></a>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="team-img">
+          <img src="/time/veronica.jpeg" alt="Veronica Vilas" loading="lazy"/>
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Verônica Vilas</h3>
+              <h4>Contribuição: Tech Leader / Design UI e UX / Frontend</h4>
+              <div class="flex flex-center gap-1">
+                <a href="https://www.linkedin.com/in/veronica-vilas/"
+                  ><i class="fa-brands fa-linkedin"></i
+                ></a>
+                <a href="https://github.com/VeronicaVilas"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
               </div>
             </div>
-            <div class="team-img">
-              <img src="/time/nilton.jpeg" alt="">
-              <div class="overlay">
-                <div class="overlay-text">
-                  <h3>Nilton Calmon</h3>
-                  <h4>Contribuição: Quality Assurance e Documentação</h4>
-                  <div class="flex flex-center gap-1">
-                    <a href="https://www.linkedin.com/in/niltonjrcalmon/?utm-source=share&utm-campaign=share-via&utm-content=profile&utm-medium=ios-app"> <i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/niltonjrcalmon"><i class="fa-brands fa-github"></i></a>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="team-img">
+          <img src="/time/nilton.jpeg" alt="" loading="lazy"/>
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Nilton Calmon</h3>
+              <h4>Contribuição: Quality Assurance e Documentação</h4>
+              <div class="flex flex-center gap-1">
+                <a
+                  href="https://www.linkedin.com/in/niltonjrcalmon/?utm-source=share&utm-campaign=share-via&utm-content=profile&utm-medium=ios-app"
+                >
+                  <i class="fa-brands fa-linkedin"></i
+                ></a>
+                <a href="https://github.com/niltonjrcalmon"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
               </div>
             </div>
-            <div class="team-img">
-              <img src="/time/wallace.jpeg" alt="">
-              <div class="overlay">
-                <div class="overlay-text">
-                  <h3> Irlan Wallace</h3>
-                  <h4>Contribuição: Ciência de Dados / Banco de Dados / Estrategista Técnico</h4>
-                  <div class="flex flex-center gap-1">
-                    <a href="#"> <i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/Wallymtts"> <i class="fa-brands fa-github"></i></a>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="team-img">
+          <img src="/time/wallace.jpeg" alt="" loading="lazy"/>
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Irlan Wallace</h3>
+              <h4>
+                Contribuição: Ciência de Dados / Banco de Dados / Estrategista
+                Técnico
+              </h4>
+              <div class="flex flex-center gap-1">
+                <a><i class="fa-brands fa-linkedin disabled-icon"></i></a>
+                <a href="https://github.com/Wallymtts">
+                  <i class="fa-brands fa-github"></i
+                ></a>
               </div>
             </div>
-            <div class="team-img">
-              <img src="/time/alisson.jpeg" alt="">
-              <div class="overlay">
-                <div class="overlay-text">
-                  <h3>Alisson Santos</h3>
-                  <h4>Contribuição: Ciência de Dados / Banco de Dados</h4>
-                  <div class="flex flex-center gap-1">
-                    <a href="#"> <i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/Alisson-S-Ribeiro"><i class="fa-brands fa-github"></i></a>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="team-img">
+          <img src="/time/alisson.jpeg" alt="" loading="lazy"/>
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Alisson Santos</h3>
+              <h4>Contribuição: Ciência de Dados / Banco de Dados</h4>
+              <div class="flex flex-center gap-1">
+                <a><i class="fa-brands fa-linkedin disabled-icon"></i></a>
+                <a href="https://github.com/Alisson-S-Ribeiro"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
               </div>
             </div>
-            <div class="team-img">
-              <img src="/time/lizandra.jpeg" alt="">
-              <div class="overlay">
-                <div class="overlay-text">
-                  <h3>Lizandra Reis</h3>
-                  <h4>Contribuição: DevOps / Arquitetura em Cloud</h4>
-                  <div class="flex flex-center gap-1">
-                    <a href="#"> <i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/lioreis"><i class="fa-brands fa-github"></i></a>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="team-img">
+          <img src="/time/lizandra.jpeg" alt="" loading="lazy"/>
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Lizandra Reis</h3>
+              <h4>Contribuição: DevOps / Arquitetura em Cloud</h4>
+              <div class="flex flex-center gap-1">
+                <a><i class="fa-brands fa-linkedin disabled-icon"></i></a>
+                <a href="https://github.com/lioreis"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
               </div>
             </div>
-            <div class="team-img">
-              <img src="/time/julia.jpeg" alt="">
-              <div class="overlay">
-                <div class="overlay-text">
-                  <h3>Júlia Virgilio</h3>
-                  <h4>Contribuição: Cloud / DevOps / Backend</h4>
-                  <div class="flex flex-center gap-1">
-                    <a href="#"> <i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"> <i class="fa-brands fa-github"></i></a>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="team-img">
+          <img src="/time/julia.jpeg" alt="" loading="lazy"/>
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Júlia Virgilio</h3>
+              <h4>Contribuição: Cloud / DevOps / Backend</h4>
+              <div class="flex flex-center gap-1">
+                <a><i class="fa-brands fa-linkedin disabled-icon"></i></a>
+                <a><i class="fa-brands fa-github disabled-icon"></i></a>
               </div>
             </div>
-            <div class="team-img">
-              <img src="/time/hercules.jpeg" alt="">
-              <div class="overlay">
-                <div class="overlay-text">
-                  <h3>Hercules Oliveira</h3>
-                  <h4>Contribuição: Backend</h4>
-                  <div class="flex flex-center gap-1">
-                    <a href="#"> <i class="fa-brands fa-linkedin"></i></a>
-                    <a href="https://github.com/herculesoliveira40"><i class="fa-brands fa-github"></i></a>
-                  </div>
-                </div>
+          </div>
+        </div>
+        <div class="team-img">
+          <img src="/time/hercules.jpeg" alt="" loading="lazy"/>
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>Hercules Oliveira</h3>
+              <h4>Contribuição: Backend</h4>
+              <div class="flex flex-center gap-1">
+                <a><i class="fa-brands fa-linkedin disabled-icon"></i></a>
+                <a href="https://github.com/herculesoliveira40"
+                  ><i class="fa-brands fa-github"></i
+                ></a>
               </div>
             </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -236,11 +296,12 @@
 <section class="explore" id="explore">
   <div class="vertical-text">
     <h6>PARTICIPE.AI</h6>
-    <hr>
+    <hr />
   </div>
   <h2 class="section-header">SEJA MAIS UM A PARTICIPAR</h2>
   <p class="section-description">
-    Gerencie seus consumos com inteligência e praticidade! Transforme suas ações diárias em economia e conquistas para um futuro mais sustentável.
+    Gerencie seus consumos com inteligência e praticidade! Transforme suas ações
+    diárias em economia e conquistas para um futuro mais sustentável.
   </p>
   <button class="btn-footer" [routerLink]="['/register']">Criar conta</button>
 </section>
@@ -249,10 +310,12 @@
   <div class="section-container footer-container">
     <div class="footer-col">
       <div class="logo">
-        <a href="#home"><img src="logo.png" alt="logo" /></a>
+        <a href="#home"><img src="logo.svg" alt="logo" /></a>
       </div>
       <p class="section-description">
-        A Participe.ai é uma multiplataforma que centraliza soluções sustentáveis, facilitando o acesso a práticas sustentáveis sem a necessidade de múltiplos recursos dispersos.
+        A Participe.ai é uma multiplataforma que centraliza soluções
+        sustentáveis, facilitando o acesso a práticas sustentáveis sem a
+        necessidade de múltiplos recursos dispersos.
       </p>
       <button class="btn" (click)="openDialog('learn-more')">Saiba mais</button>
     </div>

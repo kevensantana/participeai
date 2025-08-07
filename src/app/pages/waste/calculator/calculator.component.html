@@ -1,0 +1,831 @@
+<div class="calculadora-container">
+  <div class="header">
+    <div class="header-content">
+      <div class="header-left">
+        <div class="header-text"> 
+          <h1>Calculadora Inteligente</h1>
+          <p>Calculadora Avançada de Impacto Ambiental</p>
+        </div>
+      </div>
+      <div class="header-stats">
+        <div class="stat-number">{{historico.length}}</div>
+        <div class="stat-label">Cálculos Realizados</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <!-- Tabs Navigation -->
+    <div class="tabs-nav">
+      <button 
+        class="tab-button" 
+        [class.active]="tabAtiva === 'calculadora'"
+        (click)="setTabAtiva('calculadora')">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="4" y="3" width="16" height="2"/>
+          <rect x="4" y="9" width="16" height="2"/>
+          <rect x="4" y="15" width="16" height="2"/>
+        </svg>
+        Calculadora
+      </button>
+      <button 
+        class="tab-button" 
+        [class.active]="tabAtiva === 'resultados'"
+        (click)="setTabAtiva('resultados')">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="20" x2="12" y2="10"/>
+          <line x1="18" y1="20" x2="18" y2="4"/>
+          <line x1="6" y1="20" x2="6" y2="16"/>
+        </svg>
+        Resultados
+      </button>
+      <button 
+        class="tab-button" 
+        [class.active]="tabAtiva === 'historico'"
+        (click)="setTabAtiva('historico')">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12,6 12,12 16,14"/>
+        </svg>
+        Histórico
+      </button>
+      <button 
+        class="tab-button" 
+        [class.active]="tabAtiva === 'metas'"
+        (click)="setTabAtiva('metas')">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="6"/>
+          <circle cx="12" cy="12" r="2"/>
+        </svg>
+        Metas
+      </button>
+      <button 
+        class="tab-button" 
+        [class.active]="tabAtiva === 'dicas'"
+        (click)="setTabAtiva('dicas')">
+        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="m15 14 5-5-5-5"/>
+          <path d="m20 9h-11a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h9"/>
+        </svg>
+        Dicas
+      </button>
+    </div>
+
+    <!-- Tab Content: Calculadora -->
+    <div class="tab-content" *ngIf="tabAtiva === 'calculadora'">
+      <div class="calculator-grid">
+        <div class="calculator-main">
+          <div class="card">
+            <div class="card-header gradient-green-blue">
+              <h2 class="card-title">
+                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 6h18l-2 13H5L3 6z"/>
+                  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+                Adicionar Resíduos
+              </h2>
+              <p class="card-description">Configure os tipos e quantidades de resíduos para análise</p>
+            </div>
+            <div class="card-content">
+              <div class="residuo-item" *ngFor="let residuo of residuos; let i = index; trackBy: trackByResiduo">
+                <div class="residuo-header">
+                  <label class="residuo-label">Resíduo {{i + 1}}</label>
+                  <button 
+                    *ngIf="residuos.length > 1" 
+                    class="btn-remove"
+                    (click)="removerResiduo(residuo.id)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="18" y1="6" x2="6" y2="18"/>
+                      <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                  </button>
+                </div>
+
+                <div class="residuo-fields">
+                  <div class="field-group">
+                    <label class="field-label">Tipo de Resíduo</label>
+                    <select 
+                      class="field-select" 
+                      [(ngModel)]="residuo.tipo"
+                      (change)="onResiduoChange()">
+                      <option value="">Selecione...</option>
+                      <option *ngFor="let tipo of getTiposResiduos()" [value]="tipo.key">
+                        {{tipo.icon}} {{tipo.label}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="field-group">
+                    <label class="field-label">Quantidade (kg)</label>
+                    <input 
+                      type="number" 
+                      class="field-input" 
+                      placeholder="0.0"
+                      min="0" 
+                      step="0.1"
+                      [(ngModel)]="residuo.quantidade"
+                      (input)="onResiduoChange()">
+                  </div>
+
+                  <div class="field-group">
+                    <label class="field-label">Nome (opcional)</label>
+                    <input 
+                      type="text" 
+                      class="field-input" 
+                      placeholder="Ex: Garrafas PET"
+                      [(ngModel)]="residuo.nome">
+                  </div>
+                </div>
+
+                <div class="residuo-info" *ngIf="residuo.tipo">
+                  <div class="info-header">
+                    <div class="info-color" [style.background-color]="getTipoResiduo(residuo.tipo)?.cor"></div>
+                    <span class="info-name">{{getTipoResiduo(residuo.tipo)?.label}}</span>
+                  </div>
+                  <div class="info-stats">
+                    <div class="info-stat">CO₂: {{getTipoResiduo(residuo.tipo)?.co2}}kg/kg</div>
+                    <div class="info-stat">Água: {{getTipoResiduo(residuo.tipo)?.agua}}L/kg</div>
+                    <div class="info-stat">Energia: {{getTipoResiduo(residuo.tipo)?.energia}}kWh/kg</div>
+                    <div class="info-stat">Decomp: {{getTipoResiduo(residuo.tipo)?.decomposicao}}d</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="action-buttons">
+                <button class="btn-outline" (click)="adicionarResiduo()">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                  </svg>
+                  Adicionar Resíduo
+                </button>
+                <button 
+                  class="btn-primary" 
+                  [disabled]="!hasValidResiduos()"
+                  (click)="calcularImpacto()">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="4" y="3" width="16" height="2"/>
+                    <rect x="4" y="9" width="16" height="2"/>
+                    <rect x="4" y="15" width="16" height="2"/>
+                  </svg>
+                  Calcular Impacto
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="calculator-sidebar">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title-small">Preview Rápido</h3>
+            </div>
+            <div class="card-content">
+              <div class="preview-content" *ngIf="getValidResiduos().length > 0; else emptyPreview">
+                <div class="preview-item" *ngFor="let residuo of getValidResiduos()">
+                  <div class="preview-info">
+                    <span class="preview-icon">{{getTipoResiduo(residuo.tipo)?.icon}}</span>
+                    <span class="preview-name">{{getTipoResiduo(residuo.tipo)?.label}}</span>
+                  </div>
+                  <div class="preview-badge">{{residuo.quantidade}}kg</div>
+                </div>
+                <div class="preview-separator"></div>
+                <div class="preview-total">
+                  <div class="total-number">{{getTotalQuantidade()}}kg</div>
+                  <div class="total-label">Total de Resíduos</div>
+                </div>
+              </div>
+              <ng-template #emptyPreview>
+                <div class="empty-preview">
+                  <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 6h18l-2 13H5L3 6z"/>
+                    <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                  </svg>
+                  <p>Adicione resíduos para ver o preview</p>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title-small">Ações Rápidas</h3>
+            </div>
+            <div class="card-content">
+              <button class="quick-action-btn" (click)="limparCalculadora()">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 6h18l-2 13H5L3 6z"/>
+                  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+                Limpar Tudo
+              </button>
+              <button class="quick-action-btn" (click)="setTabAtiva('historico')">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12,6 12,12 16,14"/>
+                </svg>
+                Ver Histórico
+              </button>
+              <button class="quick-action-btn" (click)="setTabAtiva('dicas')">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m15 14 5-5-5-5"/>
+                  <path d="m20 9h-11a4 4 0 0 0-4 4v1a2 2 0 0 0 2 2h9"/>
+                </svg>
+                Dicas Sustentáveis
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Content: Resultados -->
+    <div class="tab-content" *ngIf="tabAtiva === 'resultados'">
+      <div class="results-content" *ngIf="impactoTotal; else noResults">
+        <!-- Resumo do Impacto -->
+        <div class="card">
+          <div class="card-header gradient-blue-purple">
+            <div class="header-flex">
+              <div>
+                <h2 class="card-title">
+                  <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="20" x2="12" y2="10"/>
+                    <line x1="18" y1="20" x2="18" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="16"/>
+                  </svg>
+                  Impacto Ambiental Total
+                </h2>
+                <p class="card-description">Análise completa do impacto dos resíduos calculados</p>
+              </div>
+              <div class="impact-badge" [ngClass]="'impact-' + impactoTotal.nivel">
+                Impacto {{impactoTotal.nivel.toUpperCase()}}
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="impact-grid">
+              <div class="impact-card impact-co2">
+                <svg class="impact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                  <line x1="12" y1="9" x2="12" y2="13"/>
+                  <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+                <div class="impact-value">{{impactoTotal.co2.toFixed(1)}}</div>
+                <div class="impact-label">kg CO₂ Emitido</div>
+              </div>
+              <div class="impact-card impact-agua">
+                <svg class="impact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/>
+                  <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2.04 4.6 4.14 5.93a10.94 10.94 0 0 1 5.26 9.08c0 5.98-4.9 10.97-10.97 10.97"/>
+                </svg>
+                <div class="impact-value">{{impactoTotal.agua.toFixed(0)}}</div>
+                <div class="impact-label">Litros de Água</div>
+              </div>
+              <div class="impact-card impact-energia">
+                <svg class="impact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/>
+                </svg>
+                <div class="impact-value">{{impactoTotal.energia.toFixed(1)}}</div>
+                <div class="impact-label">kWh de Energia</div>
+              </div>
+              <div class="impact-card impact-decomposicao">
+                <svg class="impact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v6l3-3 3 3"/>
+                  <path d="M12 8v6l3-3 3 3"/>
+                  <path d="M12 14v6l3-3 3 3"/>
+                </svg>
+                <div class="impact-value">{{impactoTotal.decomposicao}}</div>
+                <div class="impact-label">Dias Decomposição</div>
+              </div>
+            </div>
+
+            <div class="action-buttons">
+              <button class="btn-primary" (click)="exportarRelatorio()">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7,10 12,15 17,10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                Exportar Relatório
+              </button>
+              <button class="btn-outline" (click)="setTabAtiva('metas')">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"/>
+                  <circle cx="12" cy="12" r="6"/>
+                  <circle cx="12" cy="12" r="2"/>
+                </svg>
+                Definir Metas
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Equivalências -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title-small">Equivalências do Impacto</h3>
+            <p class="card-description">Para contextualizar o impacto calculado</p>
+          </div>
+          <div class="card-content">
+            <div class="equivalencias-grid">
+              <div class="equivalencia-card equiv-carros">
+                <div class="equiv-value">{{getEquivalencias().carros}}</div>
+                <div class="equiv-label">dias de emissões de um carro</div>
+              </div>
+              <div class="equivalencia-card equiv-arvores">
+                <div class="equiv-value">{{getEquivalencias().arvores}}</div>
+                <div class="equiv-label">árvores precisam plantar</div>
+              </div>
+              <div class="equivalencia-card equiv-energia">
+                <div class="equiv-value">{{getEquivalencias().energia}}</div>
+                <div class="equiv-label">horas de energia de casa</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noResults>
+        <div class="card">
+          <div class="card-content">
+            <div class="empty-state">
+              <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="20" x2="12" y2="10"/>
+                <line x1="18" y1="20" x2="18" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="16"/>
+              </svg>
+              <h3>Nenhum Cálculo Realizado</h3>
+              <p>Vá para a calculadora e adicione alguns resíduos para ver os resultados</p>
+              <button class="btn-primary" (click)="setTabAtiva('calculadora')">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="4" y="3" width="16" height="2"/>
+                  <rect x="4" y="9" width="16" height="2"/>
+                  <rect x="4" y="15" width="16" height="2"/>
+                </svg>
+                Ir para Calculadora
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+    <!-- Tab Content: Histórico -->
+    <div class="tab-content" *ngIf="tabAtiva === 'historico'">
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">
+            <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12,6 12,12 16,14"/>
+            </svg>
+            Histórico de Cálculos
+          </h2>
+          <p class="card-description">Acompanhe seus cálculos anteriores e tendências de impacto</p>
+        </div>
+        <div class="card-content">
+          <div class="historico-list" *ngIf="historico.length > 0; else emptyHistory">
+            <div class="historico-item" *ngFor="let item of historico">
+              <div class="historico-header">
+                <div class="historico-info">
+                  <div class="historico-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="12" y1="20" x2="12" y2="10"/>
+                      <line x1="18" y1="20" x2="18" y2="4"/>
+                      <line x1="6" y1="20" x2="6" y2="16"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="historico-title">Cálculo de {{item.data}}</div>
+                    <div class="historico-subtitle">{{getHistoricoTipos(item)}} tipos de resíduo</div>
+                  </div>
+                </div>
+                <div class="historico-badge" [ngClass]="'impact-' + item.impactoTotal.nivel">
+                  {{item.impactoTotal.nivel}}
+                </div>
+              </div>
+              <div class="historico-stats">
+                <div class="stat-item">
+                  <div class="stat-value">{{item.impactoTotal.co2.toFixed(1)}}kg</div>
+                  <div class="stat-label">CO₂</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value">{{item.impactoTotal.agua.toFixed(0)}}L</div>
+                  <div class="stat-label">Água</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value">{{item.impactoTotal.energia.toFixed(1)}}kWh</div>
+                  <div class="stat-label">Energia</div>
+                </div>
+                <div class="stat-item">
+                  <div class="stat-value">{{item.impactoTotal.decomposicao}}d</div>
+                  <div class="stat-label">Decomp.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #emptyHistory>
+            <div class="empty-state">
+              <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12,6 12,12 16,14"/>
+              </svg>
+              <h3>Nenhum Histórico</h3>
+              <p>Realize alguns cálculos para ver o histórico aqui</p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Content: Metas -->
+    <div class="tab-content" *ngIf="tabAtiva === 'metas'">
+      <div class="metas-grid">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+              Meta Mensal de CO₂
+            </h2>
+            <p class="card-description">Defina uma meta de emissões mensais e acompanhe seu progresso</p>
+          </div>
+          <div class="card-content">
+            <div class="field-group">
+              <label class="field-label">Meta Mensal (kg CO₂)</label>
+              <input 
+                type="number" 
+                class="field-input" 
+                [(ngModel)]="metaMensal"
+                min="1">
+            </div>
+            <div class="progress-group">
+              <div class="progress-header">
+                <span>Progresso da Meta</span>
+                <span>{{progressoMeta.toFixed(1)}}%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" [style.width.%]="Math.min(progressoMeta, 100)"></div>
+              </div>
+            </div>
+            <div class="alert" [ngClass]="getAlertClass()">
+              <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+              </svg>
+              <p>{{getAlertMessage()}}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="8" r="7"/>
+                <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88"/>
+              </svg>
+              Conquistas
+            </h2>
+          </div>
+          <div class="card-content">
+            <div class="conquistas-list">
+              <div class="conquista-item conquista-verde">
+                <div class="conquista-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/>
+                  </svg>
+                </div>
+                <div class="conquista-info">
+                  <div class="conquista-title">Primeiro Cálculo</div>
+                  <div class="conquista-desc">Parabéns por começar a medir seu impacto!</div>
+                </div>
+              </div>
+
+              <div class="conquista-item conquista-azul" *ngIf="historico.length >= 5">
+                <div class="conquista-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="20" x2="12" y2="10"/>
+                    <line x1="18" y1="20" x2="18" y2="4"/>
+                    <line x1="6" y1="20" x2="6" y2="16"/>
+                  </svg>
+                </div>
+                <div class="conquista-info">
+                  <div class="conquista-title">Analista Dedicado</div>
+                  <div class="conquista-desc">5 cálculos realizados!</div>
+                </div>
+              </div>
+
+              <div class="conquista-item conquista-roxa" *ngIf="progressoMeta < 50 && historico.length > 0">
+                <div class="conquista-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="6"/>
+                    <circle cx="12" cy="12" r="2"/>
+                  </svg>
+                </div>
+                <div class="conquista-info">
+                  <div class="conquista-title">Eco Warrior</div>
+                  <div class="conquista-desc">Mantendo baixo impacto!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Content: Dicas -->
+    <div class="tab-content" *ngIf="tabAtiva === 'dicas'">
+      <div class="dicas-content">
+        <!-- Estatísticas Globais -->
+        <div class="card stats-card">
+          <div class="card-header gradient-blue-purple">
+            <h2 class="card-title">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="m2 12c0-5.5 2.5-10 7-10s7 4.5 7 10-2.5 10-7 10-7-4.5-7-10z"/>
+              </svg>
+              Dados Globais de Impacto Ambiental
+            </h2>
+            <p class="card-description">Estatísticas mundiais sobre resíduos e sustentabilidade</p>
+          </div>
+          <div class="card-content">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-number">2.01 bi</div>
+                <div class="stat-desc">toneladas de lixo/ano no mundo</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">8 mi</div>
+                <div class="stat-desc">toneladas de plástico nos oceanos/ano</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">36%</div>
+                <div class="stat-desc">do lixo global é orgânico</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-number">450</div>
+                <div class="stat-desc">anos para plástico se decompor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dicas por Categoria -->
+        <div class="dicas-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title-small">
+                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 6h18l-2 13H5L3 6z"/>
+                  <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+                Dicas por Tipo de Resíduo
+              </h3>
+            </div>
+            <div class="card-content">
+              <div class="dicas-list">
+                <div class="dica-item dica-plastico">
+                  <div class="dica-header">
+                    <span class="dica-emoji">🥤</span>
+                    <h4>Plástico (6kg CO₂/kg)</h4>
+                  </div>
+                  <div class="dica-content">
+                    <p><strong>Impacto:</strong> 185L de água e 2kWh de energia por kg</p>
+                    <p><strong>Dicas:</strong></p>
+                    <ul>
+                      <li>Use garrafas reutilizáveis de vidro ou aço inox</li>
+                      <li>Prefira produtos com menos embalagem plástica</li>
+                      <li>Recicle sempre - reduz 80% do impacto</li>
+                      <li>Evite plásticos de uso único (canudos, talheres)</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="dica-item dica-papel">
+                  <div class="dica-header">
+                    <span class="dica-emoji">📄</span>
+                    <h4>Papel (3.3kg CO₂/kg)</h4>
+                  </div>
+                  <div class="dica-content">
+                    <p><strong>Impacto:</strong> 20L de água e 1.2kWh de energia por kg</p>
+                    <p><strong>Dicas:</strong></p>
+                    <ul>
+                      <li>Imprima frente e verso sempre que possível</li>
+                      <li>Use papel reciclado - economiza 60% de energia</li>
+                      <li>Digitalize documentos para reduzir uso</li>
+                      <li>Reutilize papel como rascunho</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="dica-item dica-eletronico">
+                  <div class="dica-header">
+                    <span class="dica-emoji">📱</span>
+                    <h4>Eletrônicos (15kg CO₂/unidade)</h4>
+                  </div>
+                  <div class="dica-content">
+                    <p><strong>Impacto:</strong> 500L de água e 5kWh de energia por unidade</p>
+                    <p><strong>Dicas:</strong></p>
+                    <ul>
+                      <li>Repare ao invés de trocar - economiza 90% do impacto</li>
+                      <li>Doe equipamentos funcionais</li>
+                      <li>Use pontos de coleta especializados</li>
+                      <li>Compre equipamentos recondicionados</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="dica-item dica-textil">
+                  <div class="dica-header">
+                    <span class="dica-emoji">👕</span>
+                    <h4>Têxtil (8.5kg CO₂/kg)</h4>
+                  </div>
+                  <div class="dica-content">
+                    <p><strong>Impacto:</strong> 2700L de água por kg (maior consumo!)</p>
+                    <p><strong>Dicas:</strong></p>
+                    <ul>
+                      <li>Compre roupas de qualidade que durem mais</li>
+                      <li>Explore brechós e trocas de roupas</li>
+                      <li>Doe roupas em bom estado</li>
+                      <li>Pratique upcycling - transforme peças antigas</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guia de Reciclagem -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title-small">
+                <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v6l3-3 3 3"/>
+                  <path d="M12 8v6l3-3 3 3"/>
+                  <path d="M12 14v6l3-3 3 3"/>
+                </svg>
+                Guia Completo de Reciclagem
+              </h3>
+            </div>
+            <div class="card-content">
+              <div class="reciclagem-list">
+                <div class="reciclagem-item reciclagem-organico">
+                  <h4>🟢 Lixo Orgânico</h4>
+                  <div class="reciclagem-content">
+                    <p><strong>O que vai:</strong> Restos de comida, cascas de frutas, borra de café</p>
+                    <p><strong>Não vai:</strong> Carne, ossos, laticínios (para compostagem doméstica)</p>
+                    <p><strong>Benefício:</strong> Vira adubo natural em 60-90 dias</p>
+                  </div>
+                </div>
+
+                <div class="reciclagem-item reciclagem-papel">
+                  <h4>🔵 Papel</h4>
+                  <div class="reciclagem-content">
+                    <p><strong>O que vai:</strong> Jornais, revistas, caixas de papelão</p>
+                    <p><strong>Não vai:</strong> Papel higiênico, guardanapos sujos, papel laminado</p>
+                    <p><strong>Benefício:</strong> 1 tonelada reciclada salva 17 árvores</p>
+                  </div>
+                </div>
+
+                <div class="reciclagem-item reciclagem-plastico">
+                  <h4>🔴 Plástico</h4>
+                  <div class="reciclagem-content">
+                    <p><strong>O que vai:</strong> Garrafas PET, potes, sacolas limpas</p>
+                    <p><strong>Não vai:</strong> Plásticos sujos, isopor, acrílico</p>
+                    <p><strong>Benefício:</strong> 1 tonelada reciclada economiza 1.140 kWh</p>
+                  </div>
+                </div>
+
+                <div class="reciclagem-item reciclagem-metal">
+                  <h4>🟡 Metal</h4>
+                  <div class="reciclagem-content">
+                    <p><strong>O que vai:</strong> Latas de alumínio, ferro, aço</p>
+                    <p><strong>Não vai:</strong> Metais enferrujados, com tinta</p>
+                    <p><strong>Benefício:</strong> Alumínio pode ser reciclado infinitamente</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculadora de Economia -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title-small">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="4" y="3" width="16" height="2"/>
+                <rect x="4" y="9" width="16" height="2"/>
+                <rect x="4" y="15" width="16" height="2"/>
+              </svg>
+              Calculadora de Economia com Reciclagem
+            </h3>
+            <p class="card-description">Veja quanto você pode economizar em recursos naturais reciclando</p>
+          </div>
+          <div class="card-content">
+            <div class="economia-grid">
+              <div class="economia-card economia-arvores">
+                <svg class="economia-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v6l3-3 3 3"/>
+                  <path d="M12 8v6l3-3 3 3"/>
+                  <path d="M12 14v6l3-3 3 3"/>
+                </svg>
+                <div class="economia-value">17 árvores</div>
+                <div class="economia-desc">salvas por tonelada de papel reciclado</div>
+                <div class="economia-extra">+ 26.500L de água economizada</div>
+              </div>
+
+              <div class="economia-card economia-agua">
+                <svg class="economia-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/>
+                </svg>
+                <div class="economia-value">2.000L</div>
+                <div class="economia-desc">de água economizada por kg de plástico</div>
+                <div class="economia-extra">+ 80% menos energia gasta</div>
+              </div>
+
+              <div class="economia-card economia-energia">
+                <svg class="economia-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/>
+                </svg>
+                <div class="economia-value">95%</div>
+                <div class="economia-desc">menos energia para reciclar alumínio</div>
+                <div class="economia-extra">Reciclagem infinita possível</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tempo de Decomposição -->
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title-small">
+              <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              Tempo de Decomposição na Natureza
+            </h3>
+            <p class="card-description">Entenda quanto tempo cada material leva para se decompor no meio ambiente</p>
+          </div>
+          <div class="card-content">
+            <div class="decomposicao-grid">
+              <div class="decomposicao-section">
+                <h4>⚡ Decomposição Rápida</h4>
+                <div class="decomposicao-list">
+                  <div class="decomposicao-item decomposicao-rapida">
+                    <span>🍎 Restos orgânicos</span>
+                    <div class="decomposicao-badge badge-verde">1-6 meses</div>
+                  </div>
+                  <div class="decomposicao-item decomposicao-rapida">
+                    <span>📄 Papel</span>
+                    <div class="decomposicao-badge badge-verde">2-6 meses</div>
+                  </div>
+                  <div class="decomposicao-item decomposicao-rapida">
+                    <span>🪵 Madeira</span>
+                    <div class="decomposicao-badge badge-verde">1-3 anos</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="decomposicao-section">
+                <h4>🐌 Decomposição Lenta</h4>
+                <div class="decomposicao-list">
+                  <div class="decomposicao-item decomposicao-lenta">
+                    <span>🥫 Latas de metal</span>
+                    <div class="decomposicao-badge badge-amarelo">50-100 anos</div>
+                  </div>
+                  <div class="decomposicao-item decomposicao-lenta">
+                    <span>👕 Tecidos sintéticos</span>
+                    <div class="decomposicao-badge badge-laranja">30-40 anos</div>
+                  </div>
+                  <div class="decomposicao-item decomposicao-lenta">
+                    <span>🥤 Plástico</span>
+                    <div class="decomposicao-badge badge-vermelho">450+ anos</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-danger">
+              <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                <line x1="12" y1="9" x2="12" y2="13"/>
+                <line x1="12" y1="17" x2="12.01" y2="17"/>
+              </svg>
+              <p><strong>Atenção:</strong> Vidro e alguns plásticos podem levar mais de 1.000 anos para se decompor completamente!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

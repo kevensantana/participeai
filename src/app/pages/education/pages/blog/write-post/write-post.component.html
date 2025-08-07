@@ -1,0 +1,320 @@
+<div class="write-post-page">
+  <!-- Header -->
+  <section class="write-header">
+    <div class="home-voltar">
+      <a routerLink="/education">Voltar</a>
+    </div>
+    <div class="container">
+      <div class="write-header-content">
+        <div class="write-header-title">
+          <span class="write-icon">✏️</span>
+          <h1 class="font-title">Escrever Artigo</h1>
+        </div>
+        <p class="write-header-subtitle">
+          Compartilhe seu conhecimento sobre sustentabilidade e ajude a construir um futuro mais verde
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container write-content">
+    <!-- Tabs -->
+    <div class="write-tabs">
+      <div class="tabs-nav">
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'write'"
+          (click)="setActiveTab('write')">
+          <span class="tab-icon">✏️</span>
+          Escrever
+        </button>
+        <button 
+          class="tab-btn" 
+          [class.active]="activeTab === 'preview'"
+          (click)="setActiveTab('preview')">
+          <span class="tab-icon">👁️</span>
+          Visualizar
+        </button>
+      </div>
+
+      <!-- Write Tab -->
+      <div class="tab-content" [class.active]="activeTab === 'write'">
+        <form [formGroup]="writeForm" (ngSubmit)="onSubmit('review')" class="write-form">
+          <div class="form-grid">
+            <!-- Main Form -->
+            <div class="main-form">
+              <div class="form-card">
+                <h3 class="form-card-title">
+                  <span class="card-icon">📄</span>
+                  Informações do Artigo
+                </h3>
+                
+                <div class="form-group">
+                  <label for="title">Título do Artigo *</label>
+                  <input 
+                    type="text" 
+                    id="title" 
+                    formControlName="title"
+                    placeholder="Ex: Como Reduzir o Desperdício de Alimentos em Casa"
+                    [class.error]="writeForm.get('title')?.invalid && writeForm.get('title')?.touched">
+                  <div class="error-message" *ngIf="writeForm.get('title')?.invalid && writeForm.get('title')?.touched">
+                    O título é obrigatório e deve ter pelo menos 10 caracteres.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="excerpt">Resumo/Descrição *</label>
+                  <textarea 
+                    id="excerpt" 
+                    formControlName="excerpt"
+                    placeholder="Escreva um resumo atrativo do seu artigo (máximo 200 caracteres)"
+                    maxlength="200"
+                    rows="3"
+                    [class.error]="writeForm.get('excerpt')?.invalid && writeForm.get('excerpt')?.touched"></textarea>
+                  <div class="char-counter">{{ getCharacterCount(writeForm.get('excerpt')?.value || '') }}/200 caracteres</div>
+                  <div class="error-message" *ngIf="writeForm.get('excerpt')?.invalid && writeForm.get('excerpt')?.touched">
+                    O resumo é obrigatório.
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="category">Categoria *</label>
+                    <select 
+                      id="category" 
+                      formControlName="categorySlug"
+                      [class.error]="writeForm.get('categorySlug')?.invalid && writeForm.get('categorySlug')?.touched">
+                      <option value="">Selecione uma categoria</option>
+                      <option *ngFor="let category of categories$ | async" [value]="category.slug">
+                        {{ category.name }}
+                      </option>
+                    </select>
+                    <div class="error-message" *ngIf="writeForm.get('categorySlug')?.invalid && writeForm.get('categorySlug')?.touched">
+                      Selecione uma categoria.
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <input 
+                      type="text" 
+                      id="tags" 
+                      formControlName="tags"
+                      placeholder="Ex: sustentabilidade, economia, dicas">
+                    <div class="help-text">Separe as tags com vírgulas</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="image">URL da Imagem de Capa</label>
+                  <input 
+                    type="url" 
+                    id="image" 
+                    formControlName="image"
+                    placeholder="https://exemplo.com/imagem.jpg">
+                </div>
+              </div>
+
+              <div class="form-card">
+                <h3 class="form-card-title">
+                  <span class="card-icon">✏️</span>
+                  Conteúdo do Artigo
+                </h3>
+                
+                <div class="form-group">
+                  <textarea 
+                    formControlName="content"
+                    placeholder="Escreva seu artigo aqui... Use markdown para formatação:
+
+                      **Negrito** para texto em negrito
+                      *Itálico* para texto em itálico
+                      # Título Principal
+                      ## Subtítulo
+                      - Lista com marcadores
+                      1. Lista numerada
+
+                      Exemplo de parágrafo com informações importantes sobre sustentabilidade..."
+                    rows="20"
+                    [class.error]="writeForm.get('content')?.invalid && writeForm.get('content')?.touched"></textarea>
+                  
+                  <div class="content-stats">
+                    <span>{{ getWordCount(writeForm.get('content')?.value || '') }} palavras</span>
+                    <span>~{{ estimateReadTime(writeForm.get('content')?.value || '') }} min de leitura</span>
+                  </div>
+                  
+                  <div class="error-message" *ngIf="writeForm.get('content')?.invalid && writeForm.get('content')?.touched">
+                    O conteúdo é obrigatório e deve ter pelo menos 100 caracteres.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+              <div class="form-card">
+                <h3 class="form-card-title">
+                  <span class="card-icon">👤</span>
+                  Informações do Autor
+                </h3>
+                
+                <div class="form-group">
+                  <label for="author">Nome Completo *</label>
+                  <input 
+                    type="text" 
+                    id="author" 
+                    formControlName="author"
+                    placeholder="Seu nome"
+                    [class.error]="writeForm.get('author')?.invalid && writeForm.get('author')?.touched">
+                  <div class="error-message" *ngIf="writeForm.get('author')?.invalid && writeForm.get('author')?.touched">
+                    O nome é obrigatório.
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">E-mail *</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    formControlName="email"
+                    placeholder="seu@email.com"
+                    [class.error]="writeForm.get('email')?.invalid && writeForm.get('email')?.touched">
+                  <div class="error-message" *ngIf="writeForm.get('email')?.invalid && writeForm.get('email')?.touched">
+                    E-mail válido é obrigatório.
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-card">
+                <h3 class="form-card-title">
+                  <span class="card-icon">💡</span>
+                  Dicas de Escrita
+                </h3>
+                
+                <ul class="tips-list">
+                  <li>Use dados e estatísticas para embasar seus argumentos</li>
+                  <li>Inclua exemplos práticos e dicas aplicáveis</li>
+                  <li>Mantenha parágrafos curtos e linguagem clara</li>
+                  <li>Cite fontes confiáveis quando necessário</li>
+                </ul>
+              </div>
+
+              <div class="form-card">
+                <h3 class="form-card-title">
+                  <span class="card-icon">⚠️</span>
+                  Processo de Revisão
+                </h3>
+                
+                <div class="review-steps">
+                  <div class="step">
+                    <div class="step-indicator yellow"></div>
+                    <span>Artigo enviado para revisão</span>
+                  </div>
+                  <div class="step">
+                    <div class="step-indicator blue"></div>
+                    <span>Análise pela equipe editorial</span>
+                  </div>
+                  <div class="step">
+                    <div class="step-indicator green"></div>
+                    <span>Publicação aprovada</span>
+                  </div>
+                </div>
+                
+                <p class="review-note">
+                  O processo de revisão leva em média 2-3 dias úteis.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="form-actions">
+            <button 
+              type="button" 
+              (click)="onSubmit('draft')" 
+              class="btn btn-outline"
+              [disabled]="isSubmitting">
+              <span class="btn-icon">💾</span>
+              Salvar Rascunho
+            </button>
+            <button 
+              type="submit" 
+              class="btn btn-primary"
+              [disabled]="isSubmitting">
+              <span class="btn-icon">📤</span>
+              <span *ngIf="!isSubmitting">Enviar para Revisão</span>
+              <span *ngIf="isSubmitting">Enviando...</span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Preview Tab -->
+      <div class="tab-content" [class.active]="activeTab === 'preview'">
+        <div class="preview-container">
+          <div class="preview-card">
+            <h3 class="preview-title">Pré-visualização do Artigo</h3>
+            
+            <div class="preview-content" *ngIf="writeForm.get('title')?.value; else emptyPreview">
+              <!-- Article Header -->
+              <div class="preview-header">
+                <div class="preview-category" *ngIf="writeForm.get('categorySlug')?.value">
+                  <span 
+                    class="category-badge" 
+                    [style.background-color]="getCategoryColor(writeForm.get('categorySlug')?.value)">
+                    {{ getCategoryName(writeForm.get('categorySlug')?.value) }}
+                  </span>
+                </div>
+                
+                <h1 class="preview-article-title">{{ writeForm.get('title')?.value }}</h1>
+                
+                <p class="preview-excerpt" *ngIf="writeForm.get('excerpt')?.value">
+                  {{ writeForm.get('excerpt')?.value }}
+                </p>
+
+                <div class="preview-meta">
+                  <div class="meta-left">
+                    <div class="author-info" *ngIf="writeForm.get('author')?.value">
+                      <span class="meta-icon">👤</span>
+                      <span>{{ writeForm.get('author')?.value }}</span>
+                    </div>
+                    <div class="meta-item">
+                      <span class="meta-icon">📅</span>
+                      <!-- <span>{{ new Date().toLocaleDateString('pt-BR') }}</span> -->
+                    </div>
+                    <div class="meta-item" *ngIf="writeForm.get('content')?.value">
+                      <span class="meta-icon">🕐</span>
+                      <span>~{{ estimateReadTime(writeForm.get('content')?.value) }} min de leitura</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="preview-tags" *ngIf="writeForm.get('tags')?.value">
+                  <span 
+                    class="preview-tag" 
+                    *ngFor="let tag of writeForm.get('tags')?.value.split(',')">
+                    {{ tag.trim() }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Article Content -->
+              <div class="preview-article-content" *ngIf="writeForm.get('content')?.value">
+                <div 
+                  class="preview-prose" 
+                  [innerHTML]="formatPreviewContent(writeForm.get('content')?.value)">
+                </div>
+              </div>
+            </div>
+
+            <ng-template #emptyPreview>
+              <div class="empty-preview">
+                <span class="empty-icon">📄</span>
+                <p>Preencha os campos para ver a pré-visualização</p>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

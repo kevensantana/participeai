@@ -33,6 +33,7 @@ export class ProductCardComponent {
 
   private routeMap: Record<string, string> = {
     food: '/store',
+    waste: '/map',
   };
 
   goToSection(): void {

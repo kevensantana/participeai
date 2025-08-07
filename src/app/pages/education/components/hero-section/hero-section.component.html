@@ -1,0 +1,30 @@
+<section class="hero-section">
+  <div class="hero-overlay"></div>
+  <div class="home-voltar">
+    <a routerLink="/workspace">Sair</a>
+  </div>
+  <div class="container hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title font-title">
+        Educação para um Futuro Sustentável
+      </h1>
+      <p class="hero-subtitle">
+        Descubra como pequenas ações podem gerar grandes transformações para o meio ambiente
+      </p>
+      <div class="hero-buttons">
+        <a routerLink="/blog" class="btn btn-primary btn-lg">
+          Explorar Conteúdo
+        </a>
+        <a routerLink="/escrever" class="btn btn-outline btn-lg">
+          ✍️ Escrever no Blog
+        </a>
+      </div>
+      <div class="hero-icons">
+        <div class="icon-card" *ngFor="let category of categories">
+          <div class="icon">{{ category.icon }}</div>
+          <span>{{ category.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

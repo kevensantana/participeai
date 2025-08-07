@@ -1,6 +1,6 @@
 .main-content {
   flex: 1;
-  padding: 1.5rem 0;
+  padding: 5rem 0;
 }
 
 .catalog-container {
@@ -85,7 +85,7 @@
   border-radius: 8px;
   background: var(--green-light);
   outline: none;
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   cursor: pointer;
 }
 
